@@ -11,7 +11,7 @@ public class Principal {
 		
 		String adminPadrao = "admin";
 		String senhaPadrao = "senha";
-		boolean fim = false;
+		boolean fim = true;
 	
 		while(!fim) {
 			

@@ -11,8 +11,7 @@ public class Principal {
 		
 		String adminPadrao = "admin";
 		String senhaPadrao = "senha";
-		boolean fim = false;
-	
+		boolean fim = true;
 		while(!fim) {
 			
 		
@@ -20,8 +19,7 @@ public class Principal {
 			System.out.println("######       Menu      #########");
 			System.out.println("################################");
 			System.out.println("1- Entrar como Adminstrador\n" +
-								"2- Entrar como funcionario\n"+ 
-								"3- fechar programa");
+								"2- Entrar como funcionario");
 			int opcaoMenu = Integer.parseInt(in.nextLine());
 			
 			if(opcaoMenu == 1) { 
@@ -103,10 +101,6 @@ public class Principal {
 				// e coloca passagem em usuario e usuario na passagem
 				
 				
-			} else if(opcaoMenu == 3) {
-				fim = true;
-			}else {
-				System.out.println("Opcão invalidada, TENTE UMA OPÇAO VALIDA");
 			}
 		
 		}

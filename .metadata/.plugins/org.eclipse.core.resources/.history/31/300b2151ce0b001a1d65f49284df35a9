@@ -11,7 +11,7 @@ public class Principal {
 		
 		String adminPadrao = "admin";
 		String senhaPadrao = "senha";
-		boolean fim = false;
+		boolean fim = true;
 	
 		while(!fim) {
 			
@@ -103,10 +103,6 @@ public class Principal {
 				// e coloca passagem em usuario e usuario na passagem
 				
 				
-			} else if(opcaoMenu == 3) {
-				fim = true;
-			}else {
-				System.out.println("Opcão invalidada, TENTE UMA OPÇAO VALIDA");
 			}
 		
 		}

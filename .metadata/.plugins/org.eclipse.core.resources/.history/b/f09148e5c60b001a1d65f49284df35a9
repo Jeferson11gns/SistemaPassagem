@@ -1,0 +1,80 @@
+package sistema.exec;
+
+import java.util.Scanner;
+
+public class Principal {
+	
+	public static void main(String[] args) {
+		//tudo feito aqui é para teste de como seria a tela incial
+		
+		Scanner in = new Scanner(System.in);
+		
+		String adminPadrao = "admin";
+		String senhaPadrao = "senha";
+		
+		System.out.println("################################");
+		System.out.println("######       Menu      #########");
+		System.out.println("################################");
+		System.out.println("1- Entrar como Adminstrador\n" +
+							"2- Entrar como funcionario");
+		int opcaoMenu = Integer.parseInt(in.nextLine());
+		
+		if(opcaoMenu == 1) { 
+			System.out.println("################################");
+			System.out.println("######      login      #########");
+			System.out.println("################################");
+			System.out.print("Adm: ");
+			String user = in.nextLine();
+			System.out.print("seha: ");
+			String senha = in.nextLine();
+			
+			if(user.equals(adminPadrao) && senha.equals(senhaPadrao)) {
+				System.out.println("################################");
+				System.out.println("######  Administrador  #########");
+				System.out.println("################################");
+				System.out.println("1- Adicioar Funcionario\n" +
+						"2- Adicionar rota\n" +
+						"3- remover rota\n" +
+						"4- ver lisita de rotas");
+				int opcaoAdm = Integer.parseInt(in.nextLine());
+				
+				switch(opcaoAdm) {
+					case 1:
+						return;
+					case 2:
+						return;
+					case 3:
+						return;
+					case 4:
+						return;
+				}
+				
+			}else {
+				System.out.println("SENHA OU USUARIO INCORRETOS");
+			}
+			
+			
+		}else if(opcaoMenu == 2) {
+			
+		}
+		
+		/**
+		if(!primeiraVez) {
+			System.out.println("################################");
+			System.out.println("###### Cadastro do adm #########");
+			System.out.println("################################");
+			System.out.print("Digite o nome: ");
+			String nome = in.nextLine();
+			
+			System.out.print("Digite o email: ");
+			String email = in.nextLine();
+			
+			System.out.print("Digite a senha: ");
+			String senha = in.nextLine();
+			
+			primeiraVez = true;
+		}
+		**/
+	}
+
+}

@@ -21,6 +21,6 @@ public class Administrador extends Funcionario {
 				+ senha + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNasc=" + super.getDataNasc() + "]";
 	}
 	
-	
+	// Methods
 	
 }

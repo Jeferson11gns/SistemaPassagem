@@ -8,12 +8,13 @@ public class Rota {
 	protected Cidade origem;
 	protected Cidade destino;
 	protected String tempoViagem;
-	protected Calendar horario;
+	protected String horario;
 	protected double preco;
 	
-	public Rota() {}
+	// Constructors
 	
-	public Rota(Onibus onibus, Cidade origem, Cidade destino, String tempoViagem, Calendar horario, double preco) {
+	public Rota() {}
+	public Rota(Onibus onibus, Cidade origem, Cidade destino, String tempoViagem, String horario, double preco) {
 		super();
 		this.onibus = onibus;
 		this.origem = origem;
@@ -23,6 +24,8 @@ public class Rota {
 		this.preco = preco;
 	}
 
+	// Getters and Setters
+	
 	public Onibus getOnibus() {
 		return onibus;
 	}
@@ -55,11 +58,11 @@ public class Rota {
 		this.tempoViagem = tempoViagem;
 	}
 
-	public Calendar getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Calendar horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
@@ -71,5 +74,12 @@ public class Rota {
 		this.preco = preco;
 	}
 	
+	@Override
+	public String toString() {
+		return "Rota [onibus=" + onibus + ", origem=" + origem + ", destino=" + destino + ", tempoViagem=" + tempoViagem
+				+ ", horario=" + horario + ", preco=" + preco + "]";
+	}
+	
+	// Methods
 	
 }

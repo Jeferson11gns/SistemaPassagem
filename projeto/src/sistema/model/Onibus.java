@@ -1,18 +1,20 @@
 package sistema.model;
 
+import java.util.Arrays;
+
 public class Onibus {
 	private int codigoBus;
-	private int[] poltronas;
-	private Passageiro passageiros;
+	private Poltrona[] poltronas;
+	private int qtdePoltronas;
 	
 	// Constructors
 	
-	public Onibus () {}
-	public Onibus(int codigoBus, int[] poltronas, Passageiro passageiros) {
+	public Onibus() {}
+	public Onibus(int codigoBus, Poltrona[] poltronas, int qtdePoltronas) {
 		super();
 		this.codigoBus = codigoBus;
 		this.poltronas = poltronas;
-		this.passageiros = passageiros;
+		this.qtdePoltronas = qtdePoltronas;
 	}
 	
 	// Getters and Setters
@@ -23,25 +25,27 @@ public class Onibus {
 	public void setCodigoBus(int codigoBus) {
 		this.codigoBus = codigoBus;
 	}
-	public int[] getPoltronas() {
+	public Poltrona[] getPoltronas() 
 		return poltronas;
 	}
-	public void setPoltronas(int[] poltronas) {
+	public void setPoltronas(Poltrona[] poltronas) {
 		this.poltronas = poltronas;
 	}
-	public Passageiro getPassageiros() {
-		return passageiros;
+	public int getQtdePoltronas() {
+		return qtdePoltronas;
 	}
-	public void setPassageiros(Passageiro passageiros) {
-		this.passageiros = passageiros;
+	public void setQtdePoltronas(int qtdePoltronas) {
+		this.qtdePoltronas = qtdePoltronas;
 	}
-
+	
+	
+	@Override
+	public String toString() {
+		return "Onibus [codigoBus=" + codigoBus + ", poltronas=" + Arrays.toString(poltronas) + ", qtdePoltronas="
+				+ qtdePoltronas + "]";
+	}
+	
 	// Methods
 	
-	// public int poltronaDisponivel(){}
-	
-	public int qtdePoltronas() {
-		return this.poltronas.length;
-	}
 	
 }

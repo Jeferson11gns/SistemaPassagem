@@ -6,6 +6,7 @@ public class Cidade {
 	private String estado;
 	
 	// Constructor
+	
 	public Cidade() {}
 	public Cidade(int codigo, String nome, String estado) {
 		super();
@@ -13,7 +14,6 @@ public class Cidade {
 		this.nome = nome;
 		this.estado = estado;
 	}
-	
 	
 	// Getters and Setters
 	

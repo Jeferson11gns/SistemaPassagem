@@ -1,12 +1,13 @@
 package sistema.model;
 
+import sistema.model.pessoa.Passageiro;
+
 public class Passagem extends Rota {
 	private int localizador;
 	private Passageiro cliente;
 	private boolean valida;
 	
-	
-	
+
 	// Getters and Setters
 	
 	public int getLocalizador() {

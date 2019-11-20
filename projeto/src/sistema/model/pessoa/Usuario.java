@@ -9,8 +9,9 @@ public class Usuario {
 	protected String email;
 	protected Calendar dataNasc;
 	
-	public Usuario() {}
+	// Constructors
 	
+	public Usuario() {}
 	public Usuario(String nome, String cpf, String email, Calendar dataNasc) {
 		super();
 		this.nome = nome;
@@ -18,7 +19,9 @@ public class Usuario {
 		this.email = email;
 		this.dataNasc = dataNasc;
 	}
-
+	
+	// Getters and Setters
+	
 	public String getNome() {
 		return nome;
 	}
@@ -55,5 +58,7 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNasc=" + dataNasc + "]";
 	}
+	
+	// Methods
 	
 }

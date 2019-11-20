@@ -1,6 +1,7 @@
 package sistema.model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import sistema.model.pessoa.Funcionario;
 
@@ -8,17 +9,17 @@ public class Agencia {
 	private String cnpj;
 	private String nome;
 	private Cidade local;
-	private Funcionario[] funcionarios;
+	private List<Funcionario> funcionarios;
 	
 	// Constructors
 	
 	public Agencia() {}
-	public Agencia(String cnpj, String nome, Cidade local, Funcionario[] funcionarios) {
+	public Agencia(String cnpj, String nome, Cidade local, List<Funcionario> funcionarios) {
 		super();
 		this.cnpj = cnpj;
 		this.nome = nome;
 		this.local = local;
-		this.funcionarios = funcionarios;
+		this.funcionarios = new ArrayList<Funcionario>();
 	}
 	
 	// Getters and Setters
@@ -47,20 +48,18 @@ public class Agencia {
 		this.local = local;
 	}
 	
-	public Funcionario[] getFuncionarios() {
+	public List<Funcionario> getFuncionarios() {
 		return funcionarios;
 	}
 	
-	public void setFuncionarios(Funcionario[] funcionarios) {
+	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 	
 	@Override
 	public String toString() {
-		return "Agencia [cnpj=" + cnpj + ", nome=" + nome + ", local=" + local + ", funcionarios="
-				+ Arrays.toString(funcionarios) + "]";
+		return "Agencia [cnpj=" + cnpj + ", nome=" + nome + ", local=" + local + ", funcionarios=" + funcionarios + "]";
 	}
-	
 	
 	// Methods
 

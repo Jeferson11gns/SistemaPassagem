@@ -1,35 +1,36 @@
 package sistema.model.pessoa;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
 
 import sistema.model.Passagem;
 
 public class Passageiro extends Usuario{
-	private Passagem passagem;
+	private List<Passagem> passagens;
 	
 	// Constructors
 	
 	public Passageiro() {}
-	public Passageiro(String nome, String cpf, String email, Calendar dataNasc, Passagem passagem) {
-		super(nome, cpf, email, dataNasc);
-		this.passagem = passagem;
+	public Passageiro(List<Passagem> passagens) {
+		super();
+		this.passagens = new ArrayList<Passagem>();
 	}
 	
 	// Getters and Setters
 	
-	public Passagem getPassagem() {
-		return passagem;
+	public List<Passagem> getPassagens() {
+		return passagens;
 	}
-	public void setPassagem(Passagem passagem) {
-		this.passagem = passagem;
+	public void setPassagens(List<Passagem> passagens) {
+		this.passagens = passagens;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "Passageiro [passagem=" + passagem + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email
-				+ ", dataNasc=" + dataNasc + "]";
+		return "Passageiro [passagens=" + passagens + "]";
 	}
+	
 
 	// Methods
 

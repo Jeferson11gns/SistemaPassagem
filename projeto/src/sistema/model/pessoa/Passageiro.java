@@ -31,7 +31,7 @@ public class Passageiro extends Usuario{
 		return "Passageiro [passagens=" + passagens + "]";
 	}
 	
-
 	// Methods
+	
 
 }

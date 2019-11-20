@@ -9,8 +9,16 @@ public class Principal {
 		
 		Scanner in = new Scanner(System.in);
 		
-		boolean primeiraVez = false;
+		String adminPadrao = "admin";
+		String senhaPadrao = "senha";
 		
+		System.out.println("################################");
+		System.out.println("######       Menu      #########");
+		System.out.println("################################");
+		System.out.println("1- Entrar como Adminstrador\n" +
+							"2- Entrar como funcionario");
+		
+		/**
 		if(!primeiraVez) {
 			System.out.println("################################");
 			System.out.println("###### Cadastro do adm #########");
@@ -26,7 +34,7 @@ public class Principal {
 			
 			primeiraVez = true;
 		}
-		
+		**/
 	}
 
 }

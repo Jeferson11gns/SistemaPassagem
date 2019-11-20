@@ -1,0 +1,5 @@
+package sistema.model;
+
+public class Passageiro extends Usuario {
+
+}

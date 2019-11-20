@@ -1,0 +1,12 @@
+package sistema.model;
+
+public class Rota {
+	
+	protected Onibus onibus;
+	protected Cidade origem;
+	protected Cidade destino;
+	protected String tempoViagem;
+	protected Calendar horario;
+	
+	
+}

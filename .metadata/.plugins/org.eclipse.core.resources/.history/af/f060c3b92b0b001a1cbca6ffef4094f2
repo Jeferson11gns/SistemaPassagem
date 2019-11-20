@@ -1,0 +1,7 @@
+package sistema.model.pessoa;
+
+import sistema.model.Funcionario;
+
+public class Administrador extends Funcionario {
+	
+}

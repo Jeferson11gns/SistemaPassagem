@@ -25,7 +25,7 @@ public class Onibus {
 	public void setCodigoBus(int codigoBus) {
 		this.codigoBus = codigoBus;
 	}
-	public Poltrona[] getPoltronas() 
+	public Poltrona[] getPoltronas() {
 		return poltronas;
 	}
 	public void setPoltronas(Poltrona[] poltronas) {
@@ -38,12 +38,13 @@ public class Onibus {
 		this.qtdePoltronas = qtdePoltronas;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Onibus [codigoBus=" + codigoBus + ", poltronas=" + Arrays.toString(poltronas) + ", qtdePoltronas="
 				+ qtdePoltronas + "]";
 	}
+	
+	
 	
 	// Methods
 	

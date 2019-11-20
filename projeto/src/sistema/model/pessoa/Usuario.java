@@ -11,7 +11,9 @@ public class Usuario {
 	
 	// Constructors
 	
-	public Usuario() {}
+	public Usuario() {
+		this.dataNasc = Calendar.getInstance();
+	}
 	public Usuario(String nome, String cpf, String email, Calendar dataNasc) {
 		super();
 		this.nome = nome;
@@ -46,17 +48,22 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public Calendar getDataNasc() {
-		return dataNasc;
+	public String getDataNasc() {
+		String d = dataNasc.get(Calendar.DAY_OF_MONTH) + "/" + 
+				dataNasc.get(Calendar.MONTH) + "/" + 
+				dataNasc.get(Calendar.YEAR);
+		return d;
 	}
 
-	public void setDataAdmissa(Calendar dataAdmissa) {
-		this.dataNasc = dataAdmissa;
+	public void setDataNasc(int dia, int mes, int ano) {
+		dataNasc.set(Calendar.DAY_OF_MONTH, dia);
+		dataNasc.set(Calendar.MONTH, mes);
+		dataNasc.set(Calendar.YEAR, ano);
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNasc=" + dataNasc + "]";
+		return "Usuario [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNasc=" + this.getDataNasc() + "]";
 	}
 	
 	// Methods

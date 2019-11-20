@@ -9,23 +9,34 @@ public class Funcionario extends Usuario {
 	protected String senha;
 	
 	// Constructors
-	
-	public Funcionario(Calendar dataAdmissao, double salario, String login, String senha) {
+
+	public Funcionario () {
 		super();
+		this.dataAdmissao = Calendar.getInstance();
+	}
+	public Funcionario(String nome, String cpf, String email, Calendar dataNasc, Calendar dataAdmissao, double salario,
+			String login, String senha) {
+		super(nome, cpf, email, dataNasc);
 		this.dataAdmissao = dataAdmissao;
 		this.salario = salario;
 		this.login = login;
 		this.senha = senha;
 	}
+	
 		
 	// Getters and Setters
 	
-	public Calendar getDataAdmissao() {
-		return dataAdmissao;
+	public String getDataAdmissao() {
+		String d = dataAdmissao.get(Calendar.DAY_OF_MONTH) + "/" + 
+				dataAdmissao.get(Calendar.MONTH) + "/" + 
+				dataAdmissao.get(Calendar.YEAR);
+		return d;
 	}
 
-	public void setDataAdmissao(Calendar dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
+	public void setDataAdmissao(int dia, int mes, int ano) {
+		dataAdmissao.set(Calendar.DAY_OF_MONTH, dia);
+		dataAdmissao.set(Calendar.MONTH, mes);
+		dataAdmissao.set(Calendar.YEAR, ano);	
 	}
 
 	public double getSalario() {
@@ -51,11 +62,15 @@ public class Funcionario extends Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Funcionario [dataAdmissao=" + dataAdmissao + ", salario=" + salario + ", login=" + login + ", senha="
-				+ senha + "]";
+		return "Funcionario [dataAdmissao=" + this.getDataAdmissao() + ", salario=" + salario + ", login=" + login + ", senha="
+				+ senha + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNasc=" + super.getDataNasc() + "]";
 	}
+
+
+
+	
 
 }

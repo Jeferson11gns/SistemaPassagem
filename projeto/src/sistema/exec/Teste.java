@@ -24,7 +24,7 @@ public class Teste {
 		List<Onibus> listaOnibus = new ArrayList<Onibus>();
 		List<Passagem> listaPassagens = new ArrayList<Passagem>();
 		List<Rota> listaRotas = new ArrayList<Rota>();
-		List<Administrador> listaAdministradores = new ArrayList<Administrador>();
+		//List<Administrador> listaAdministradores = new ArrayList<Administrador>();
 		List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
 		List<Passageiro> listaPassageiros = new ArrayList<Passageiro>();
 		

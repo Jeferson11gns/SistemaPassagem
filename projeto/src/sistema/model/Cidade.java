@@ -2,7 +2,7 @@ package sistema.model;
 
 public class Cidade {
 	
-	private int codigo;
+	private int codigo;// tirar depois
 	private String nome;
 	private String estado;
 	

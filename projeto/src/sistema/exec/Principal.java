@@ -11,6 +11,8 @@ public class Principal {
 		
 		String adminPadrao = "admin";
 		String senhaPadrao = "senha";
+		int opcaoMenu;
+		int opcaoAdm;
 		boolean fim = false;
 	
 		while(!fim) {
@@ -22,8 +24,13 @@ public class Principal {
 			System.out.println("1- Entrar como Adminstrador\n" +
 								"2- Entrar como funcionario\n"+ 
 								"3- fechar programa");
-			int opcaoMenu = Integer.parseInt(in.nextLine());
-			
+			try {
+				opcaoMenu = Integer.parseInt(in.nextLine());
+			}
+			catch(NumberFormatException e) {
+				opcaoMenu=4;
+			}
+		
 			if(opcaoMenu == 1) { 
 				System.out.println("\n################################");
 				System.out.println("######      login      #########");
@@ -48,8 +55,12 @@ public class Principal {
 					System.out.println("4- Adicionar rota\n" +
 							"5- remover rota\n" +
 							"6- ver lisita de rotas");
-					int opcaoAdm = Integer.parseInt(in.nextLine());
-					
+					try {
+						opcaoAdm = Integer.parseInt(in.nextLine());
+					}
+					catch(NumberFormatException e) {
+						opcaoAdm = 7;
+					}
 					switch(opcaoAdm) {
 						case 1:
 							System.out.println("AQUI VAI CHAMAR A FUNÇÃo AddFuncionario");
@@ -69,6 +80,8 @@ public class Principal {
 						case 6:
 							System.out.println("AQUI VAI CHAMAR A FUNÇÃo ListaRota");
 							return;
+						default:
+							System.out.println("Digite uma opção válida");
 					}
 					
 				}else {

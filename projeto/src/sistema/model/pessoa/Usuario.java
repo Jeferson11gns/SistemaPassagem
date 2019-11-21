@@ -14,6 +14,7 @@ public class Usuario {
 	public Usuario() {
 		this.dataNasc = Calendar.getInstance();
 	}
+	
 	public Usuario(String nome, String cpf, String email, Calendar dataNasc) {
 		super();
 		this.nome = nome;

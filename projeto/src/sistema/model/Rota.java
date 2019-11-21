@@ -14,6 +14,7 @@ public class Rota {
 	// Constructors
 	
 	public Rota() {}
+	
 	public Rota(Onibus onibus, Cidade origem, Cidade destino, String tempoViagem, String horario, double preco) {
 		super();
 		this.onibus = onibus;

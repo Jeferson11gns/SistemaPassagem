@@ -3,6 +3,7 @@ package sistema.model;
 import sistema.model.pessoa.Passageiro;
 
 public class Passagem {
+	
 	private int localizador;
 	private Rota rota;
 	private Passageiro passageiro;
@@ -11,6 +12,7 @@ public class Passagem {
 	// Constructors
 	
 	public Passagem() {}
+	
 	public Passagem(int localizador, Rota rota, Passageiro passageiro, boolean valida) {
 		super();
 		this.localizador = localizador;
@@ -24,24 +26,31 @@ public class Passagem {
 	public int getLocalizador() {
 		return localizador;
 	}
+	
 	public void setLocalizador(int localizador) {
 		this.localizador = localizador;
 	}
+	
 	public Rota getRota() {
 		return rota;
 	}
+	
 	public void setRota(Rota rota) {
 		this.rota = rota;
 	}
+	
 	public Passageiro getPassageiro() {
 		return passageiro;
 	}
+	
 	public void setPassageiro(Passageiro passageiro) {
 		this.passageiro = passageiro;
 	}
+	
 	public boolean isValida() {
 		return valida;
 	}
+	
 	public void setValida(boolean valida) {
 		this.valida = valida;
 	}	

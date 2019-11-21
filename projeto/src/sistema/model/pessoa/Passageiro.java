@@ -5,12 +5,16 @@ import java.util.List;
 
 import sistema.model.Passagem;
 
-public class Passageiro extends Usuario{
+public class Passageiro extends Usuario {
+	
 	private List<Passagem> passagens;
 	
 	// Constructors
 	
-	public Passageiro() {}
+	public Passageiro() {
+		this.passagens = new ArrayList<Passagem>();
+	}
+	
 	public Passageiro(List<Passagem> passagens) {
 		super();
 		this.passagens = new ArrayList<Passagem>();
@@ -21,6 +25,7 @@ public class Passageiro extends Usuario{
 	public List<Passagem> getPassagens() {
 		return passagens;
 	}
+	
 	public void setPassagens(List<Passagem> passagens) {
 		this.passagens = passagens;
 	}

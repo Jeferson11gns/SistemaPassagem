@@ -3,6 +3,7 @@ package sistema.model.pessoa;
 import java.util.Calendar;
 
 public class Funcionario extends Usuario {
+	
 	protected Calendar dataAdmissao;
 	protected double salario;
 	protected String login;
@@ -14,6 +15,7 @@ public class Funcionario extends Usuario {
 		super();
 		this.dataAdmissao = Calendar.getInstance();
 	}
+	
 	public Funcionario(String nome, String cpf, String email, Calendar dataNasc, Calendar dataAdmissao, double salario,
 			String login, String senha) {
 		super(nome, cpf, email, dataNasc);

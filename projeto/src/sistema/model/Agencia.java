@@ -6,6 +6,7 @@ import java.util.List;
 import sistema.model.pessoa.Funcionario;
 
 public class Agencia {
+	
 	private String cnpj;
 	private String nome;
 	private Cidade local;
@@ -13,7 +14,10 @@ public class Agencia {
 	
 	// Constructors
 	
-	public Agencia() {}
+	public Agencia() {
+		this.funcionarios = new ArrayList<Funcionario>();
+	}
+	
 	public Agencia(String cnpj, String nome, Cidade local, List<Funcionario> funcionarios) {
 		super();
 		this.cnpj = cnpj;

@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import sistema.model.Cidade;
+import sistema.model.Onibus;
+import sistema.model.Passagem;
+import sistema.model.Poltrona;
+import sistema.model.Rota;
+import sistema.model.pessoa.Administrador;
 import sistema.model.pessoa.Funcionario;
 import sistema.model.pessoa.Passageiro;
 
@@ -15,20 +21,34 @@ public class Principal {
 		Scanner in = new Scanner(System.in);
 		
 		
+		//Objetos padroes
+		
+		
+		
+		
+		//fim
+		
 		List<Passageiro> listaPassageiros = new ArrayList<Passageiro>();
 		List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
 		
+		List<Cidade> listaCidades = new ArrayList<Cidade>();
+		List<Onibus> listaOnibus = new ArrayList<Onibus>();
+		List<Passagem> listaPassagens = new ArrayList<Passagem>();
+		List<Rota> listaRotas = new ArrayList<Rota>();
 		
+		Administrador adm = new Administrador();
+		adm.setNome("anderson");
+		adm.setCpf("000.000.000-00");
+		adm.setLogin("admin");
+		adm.setSenha("admin");
+	
 		
-		String adminPadrao = "admin";
-		String senhaPadrao = "admin";
 		
 		int opcaoMenu;
 		int opcaoAdm;
 		
 		boolean entrou = false;
 		boolean fimDoPrograma = false;
-		boolean voltar = false;
 	
 		do {
 			
@@ -59,7 +79,7 @@ public class Principal {
 					System.out.print("seha: ");
 					String senha = in.nextLine();
 					
-					if(user.equals(adminPadrao) && senha.equals(senhaPadrao)) {
+					if(user.equals(adm.getLogin()) && senha.equals(adm.getSenha())) {
 						entrou = true;
 					} else {
 						System.out.println("SENHA OU USUARIO INCORRETOS.");
@@ -74,22 +94,23 @@ public class Principal {
 					System.out.println("######  Administrador  #########");
 					System.out.println("################################\n");
 					
-					System.out.println("######  Relacionado ao Funcionario  #########");
+					System.out.println("######  Relacionado ao Funcionario  #########\n");
 					System.out.println("1- Adicioar Funcionario\n" +
 							"2- Remover funcionario\n"+
-							"3- lista Funcionario");
+							"3- lista Funcionario\n"+ 
+							"4 - Atualizar funcionario\n\n");
 							
-					System.out.println("######  Relacionado a Rota  #########");
+					System.out.println("######  Relacionado a Rota  #########\n");
 							
-					System.out.println("4- Adicionar rota\n" +
-							"5- remover rota\n" +
-							"6- ver lisita de rotas\n" +
-							"7 - voltar para o menu inicial");
+					System.out.println("5- Adicionar rota\n" +
+							"6- remover rota\n" +
+							"7- ver lisita de rotas\n" +
+							"8 - voltar para o menu inicial");
 					try {
 						opcaoAdm = Integer.parseInt(in.nextLine());
 					}
 					catch(NumberFormatException e) {
-						opcaoAdm = 8;
+						opcaoAdm = 9;
 					}
 					
 					
@@ -113,17 +134,61 @@ public class Principal {
 						
 					} else if(opcaoAdm == 4) {
 						
-						System.out.println("AQUI VAI CHAMAR A FUNÇÃo AddRota");
+						System.out.println("Digite o cpf do funcionario que voce quer atualizar: ");
+						String cpf = in.nextLine();
+						
+						listaFuncionarios.get(listaFuncionarios.size()-1).atualizarFuncionario(cpf);
 						
 					} else if(opcaoAdm == 5) {
 						
-						System.out.println("AQUI VAI CHAMAR A FUNÇÃo removeRota");
+						listaRotas.add(new Rota());
+						
+						
+						System.out.println("Digite a cidade de origem");
+						listaCidades.add(new Cidade());
+						listaCidades.get(listaCidades.size()-1).addCidade(listaCidades);
+						
+						//colocando os objetos de cidade de origem na rota
+						listaRotas.get(listaRotas.size()-1).setOrigem(listaCidades.get(listaCidades.size()-1));
+						
+						
+						System.out.println("Digite a cidade de Destino");
+						listaCidades.add(new Cidade());
+						listaCidades.get(listaCidades.size()-1).addCidade(listaCidades);
+						
+						//colocando os objetos de cidade de destino na rota
+						listaRotas.get(listaRotas.size()-1).setDestino(listaCidades.get(listaCidades.size()-1));
+
+						
+						listaRotas.get(listaRotas.size()-1).addRota(listaRotas);
+						
+						
+						
+						listaOnibus.add(new Onibus());
+						listaOnibus.get(listaOnibus.size()-1).addOnibus(listaOnibus);
+						
+						
+						//colocando o onibus na rota
+						listaRotas.get(listaRotas.size()-1).setOnibus(listaOnibus.get(listaOnibus.size()-1));
+						
 						
 					} else if(opcaoAdm == 6) {
 						
-						System.out.println("AQUI VAI CHAMAR A FUNÇÃo ListaRota");
+						System.out.println("Digite a cidade de origem da roda a ser removida: ");
+						String cidadeOrigem = in.nextLine();
+						
+						System.out.println("Digite a cidade de origem da roda a ser removida: ");
+						String cidadeDestino = in.nextLine();
+						
+						listaRotas.get(listaRotas.size()-1).removerRota(cidadeOrigem, cidadeDestino);
 						
 					} else if(opcaoAdm == 7) {
+						
+						for(Rota x: listaRotas) {
+							System.out.println(x);
+						}
+						
+					} else if(opcaoAdm == 8) {
 						entrou = false;
 						//break;
 						

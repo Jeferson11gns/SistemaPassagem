@@ -1,8 +1,17 @@
 package sistema.model;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-public class Rota {
+import sistema.crud.CrudRota;
+import sistema.model.pessoa.Funcionario;
+
+
+
+public class Rota implements CrudRota {
+	
+	Scanner in = new Scanner(System.in);
 	
 	protected Onibus onibus;
 	protected Cidade origem;
@@ -11,9 +20,13 @@ public class Rota {
 	protected String horario;
 	protected double preco;
 	
+	private List<Rota> rotas;
+	
 	// Constructors
 	
-	public Rota() {}
+	public Rota() {
+		this.rotas = new ArrayList<Rota>();
+	}
 	
 	public Rota(Onibus onibus, Cidade origem, Cidade destino, String tempoViagem, String horario, double preco) {
 		super();
@@ -79,6 +92,72 @@ public class Rota {
 	public String toString() {
 		return "Rota [onibus=" + onibus + ", origem=" + origem + ", destino=" + destino + ", tempoViagem=" + tempoViagem
 				+ ", horario=" + horario + ", preco=" + preco + "]";
+	}
+
+	@Override
+	public void addRota(List<Rota> rotas) {
+		
+		this.rotas = rotas;
+		
+		//add coisas proprias da rota
+		System.out.println("Digite o horario");
+		this.rotas.get(rotas.size()-1).setHorario(in.nextLine());
+		
+		System.out.println("Digite o preco");
+		this.rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
+		
+		System.out.println("Digite o tempo de viagem");
+		this.rotas.get(rotas.size()-1).setTempoViagem(in.nextLine());
+		
+		//System.out.println("");
+	}
+
+	@Override
+	public void removerRota(String cidadeOrigem, String cidadeDestino) {
+		
+		int controle = 1;
+		
+		for(Rota x: this.rotas) {
+			if(x.getOrigem().getNome().equals(cidadeOrigem) && x.getDestino().getNome().equals(cidadeDestino)) {
+				this.rotas.remove(x);
+				System.out.println("A rota foi removido com sucesso");
+				return;
+			}else {
+				controle = 0;
+			}
+		}
+			
+		if(controle == 0) {
+			System.out.println("A rota nao pode ser removido");
+		}
+		
+	}
+
+	@Override
+	public void buscarRota(String cidadeOrigem, String cidadeDestino) {
+		
+		int controle = 1;
+		
+		for(Rota x: this.rotas) {
+			if(x.getOrigem().getNome().equals(cidadeOrigem) && x.getDestino().getNome().equals(cidadeDestino)) {
+				System.out.println(x);
+				return;
+			}else {
+				controle = 0;
+			}
+		}
+			
+		if(controle == 0) {
+			System.out.println("A rota nao pode ser removido");
+		}
+		
+		
+	}
+
+	@Override
+	public void atualizarRota() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	// Methods

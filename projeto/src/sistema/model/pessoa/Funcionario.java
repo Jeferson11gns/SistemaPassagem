@@ -96,6 +96,19 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 		System.out.println("Digite o cpf do Funcionario");
 		this.funcionarios.get(funcionarios.size()-1).setCpf(in.nextLine());
 		
+		System.out.println("Digite o email Funcionario");
+		this.funcionarios.get(funcionarios.size()-1).setEmail(in.nextLine());
+		
+		System.out.println("Digite a data de nascimento do Funcionario: ");
+		String auxiliar[] = in.nextLine().split("/");
+
+        this.funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[2]), 
+        														Integer.parseInt(auxiliar[1]),
+        														Integer.parseInt(auxiliar[0]));
+        
+        System.out.println("Digite o salario do funcionario");
+        this.funcionarios.get(funcionarios.size()-1).setSalario(Double.parseDouble(in.nextLine()));
+        
 	}
 	
 	@Override
@@ -142,8 +155,26 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	}
 	
 	@Override
-	public void atualizarFuncionario() {
-		// TODO Auto-generated method stub
+	public void atualizarFuncionario(String cpf) {
+		
+		int controle = 1;
+		
+		for(Funcionario x: this.funcionarios) {
+			if(x.getCpf().equals(cpf)) {
+
+				System.out.println("Digiteo novo salario: ");
+				x.setSalario(Double.parseDouble(in.nextLine()));
+				
+				return;
+			} else {
+				controle = 0;
+			}
+			
+			if(controle == 0) {
+				System.out.println("Funcionario nao encontrados");
+			}
+			
+		}
 		
 	}
 	

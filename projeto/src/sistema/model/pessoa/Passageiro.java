@@ -3,9 +3,10 @@ package sistema.model.pessoa;
 import java.util.ArrayList;
 import java.util.List;
 
+import sistema.crud.CrudPassageiro;
 import sistema.model.Passagem;
 
-public class Passageiro extends Usuario {
+public class Passageiro extends Usuario implements CrudPassageiro {
 	
 	private List<Passagem> passagens;
 	
@@ -34,6 +35,30 @@ public class Passageiro extends Usuario {
 	@Override
 	public String toString() {
 		return "Passageiro [passagens=" + passagens + "]";
+	}
+
+	@Override
+	public void addPassageiro(List<Passageiro> passageiros) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removerPassageiro(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buscarPassageiro(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizarPassageiro() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	// Methods

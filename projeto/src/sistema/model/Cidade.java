@@ -1,35 +1,35 @@
 package sistema.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import sistema.crud.CrudCidade;
+import sistema.model.pessoa.Funcionario;
 
 public class Cidade implements CrudCidade {
 	
-	private int codigo;// tirar depois
+	Scanner in = new Scanner(System.in);
+	
+	
 	private String nome;
 	private String estado;
 	
+	private List<Cidade> cidades;
 	// Constructor
 	
-	public Cidade() {}
+	public Cidade() {
+		cidades = new ArrayList<Cidade>();
+	}
 	
-	public Cidade(int codigo, String nome, String estado) {
+	public Cidade(String nome, String estado) {
 		super();
-		this.codigo = codigo;
 		this.nome = nome;
 		this.estado = estado;
 	}
 	
 	// Getters and Setters
 	
-	public int getCodigo() {
-		return codigo;
-	}
-	
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
 	
 	public String getNome() {
 		return nome;
@@ -49,25 +49,61 @@ public class Cidade implements CrudCidade {
 	
 	@Override
 	public String toString() {
-		return "Cidade [codigo=" + codigo + ", nome=" + nome + ", estado=" + estado + "]";
+		return "Cidade [ nome=" + nome + ", estado=" + estado + "]";
 	}
 
 	@Override
 	public void addCidade(List<Cidade> cidades) {
-		// TODO Auto-generated method stub
+		
+		this.cidades = cidades;
+		
+		System.out.println("Digite o nome da cidade: ");
+		this.cidades.get(cidades.size()-1).setNome(in.nextLine());
+		
+		System.out.println("Fica em qual estado: ");
+		this.cidades.get(cidades.size()-1).setEstado(in.nextLine());
 		
 	}
 
 	@Override
 	public void removerCidade(String nome) {
-		// TODO Auto-generated method stub
+		
+		int controle = 1;
+		
+		for(Cidade x: this.cidades) {
+			if(x.getNome().equals(nome)) {
+				this.cidades.remove(x);
+				System.out.println("A cidade: " + this.nome + " foi removido com sucesso");
+				return;
+			}else {
+				controle = 0;
+			}
+		}
+			
+		if(controle == 0) {
+			System.out.println("A cidade nao pode ser removido");
+		}
+		
 		
 	}
 
 	@Override
 	public void buscarCidade(String nome) {
-		// TODO Auto-generated method stub
 		
+		int controle = 1;
+		
+		for(Cidade x: this.cidades) {
+			if(x.getNome().equals(nome)) {
+				System.out.println(x);
+				return;
+			}else {
+				controle = 0;
+			}
+		}
+			
+		if(controle == 0) {
+			System.out.println("A cidade nao pode ser encontrada");
+		}
 	}
 
 	@Override

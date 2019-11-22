@@ -1,6 +1,11 @@
 package sistema.exec;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import sistema.model.pessoa.Funcionario;
+import sistema.model.pessoa.Passageiro;
 
 public class Principal {
 	
@@ -9,15 +14,24 @@ public class Principal {
 		
 		Scanner in = new Scanner(System.in);
 		
+		
+		List<Passageiro> listaPassageiros = new ArrayList<Passageiro>();
+		List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
+		
+		
+		
 		String adminPadrao = "admin";
-		String senhaPadrao = "senha";
+		String senhaPadrao = "admin";
+		
 		int opcaoMenu;
 		int opcaoAdm;
-		boolean fim = false;
-	
-		while(!fim) {
-			
 		
+		boolean entrou = false;
+		boolean fimDoPrograma = false;
+		boolean voltar = false;
+	
+		do {
+			
 			System.out.println("################################");
 			System.out.println("######       Menu      #########");
 			System.out.println("################################");
@@ -28,19 +42,34 @@ public class Principal {
 				opcaoMenu = Integer.parseInt(in.nextLine());
 			}
 			catch(NumberFormatException e) {
-				opcaoMenu=4;
+				opcaoMenu = 4;
 			}
 		
 			if(opcaoMenu == 1) { 
-				System.out.println("\n################################");
-				System.out.println("######      login      #########");
-				System.out.println("################################");
-				System.out.print("Adm: ");
-				String user = in.nextLine();
-				System.out.print("seha: ");
-				String senha = in.nextLine();
 				
-				if(user.equals(adminPadrao) && senha.equals(senhaPadrao)) {
+				 do{
+					
+					System.out.println("\n################################");
+					System.out.println("######      login      #########");
+					System.out.println("################################\n");
+					
+					System.out.print("Adm: ");
+					String user = in.nextLine();
+					
+					System.out.print("seha: ");
+					String senha = in.nextLine();
+					
+					if(user.equals(adminPadrao) && senha.equals(senhaPadrao)) {
+						entrou = true;
+					} else {
+						System.out.println("SENHA OU USUARIO INCORRETOS.");
+					}
+					
+				 } while(!entrou);	
+					
+				 while(entrou) {
+						
+						
 					System.out.println("\n################################");
 					System.out.println("######  Administrador  #########");
 					System.out.println("################################\n");
@@ -54,42 +83,65 @@ public class Principal {
 							
 					System.out.println("4- Adicionar rota\n" +
 							"5- remover rota\n" +
-							"6- ver lisita de rotas");
+							"6- ver lisita de rotas\n" +
+							"7 - voltar para o menu inicial");
 					try {
 						opcaoAdm = Integer.parseInt(in.nextLine());
 					}
 					catch(NumberFormatException e) {
-						opcaoAdm = 7;
-					}
-					switch(opcaoAdm) {
-						case 1:
-							System.out.println("AQUI VAI CHAMAR A FUNÇÃo AddFuncionario");
-							return;
-						case 2:
-							System.out.println("AQUI VAI CHAMAR A FUNÇÃo removeFuncionario");
-							return;
-						case 3:
-							System.out.println("AQUI VAI CHAMAR A FUNÇÃo listaFuncionario");
-							return;
-						case 4:
-							System.out.println("AQUI VAI CHAMAR A FUNÇÃo AddRota");
-							return;
-						case 5:
-							System.out.println("AQUI VAI CHAMAR A FUNÇÃo removeRota");
-							return;
-						case 6:
-							System.out.println("AQUI VAI CHAMAR A FUNÇÃo ListaRota");
-							return;
-						default:
-							System.out.println("Digite uma opção válida");
+						opcaoAdm = 8;
 					}
 					
-				}else {
-					System.out.println("SENHA OU USUARIO INCORRETOS");
-				}
+					
+					if(opcaoAdm == 1) {
+						
+						listaFuncionarios.add(new Funcionario());
+						listaFuncionarios.get(listaFuncionarios.size()-1).addFuncionario(listaFuncionarios);
+						
+					} else if(opcaoAdm == 2) {
+						System.out.println("Digite o cpf do funcionario que quer remove:");
+						String cpf = in.nextLine();
+						
+						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf);
+						
+						
+					} else if(opcaoAdm == 3) {
+						
+						for(Funcionario x: listaFuncionarios) {
+							System.out.println(x);
+						}
+						
+					} else if(opcaoAdm == 4) {
+						
+						System.out.println("AQUI VAI CHAMAR A FUNÇÃo AddRota");
+						
+					} else if(opcaoAdm == 5) {
+						
+						System.out.println("AQUI VAI CHAMAR A FUNÇÃo removeRota");
+						
+					} else if(opcaoAdm == 6) {
+						
+						System.out.println("AQUI VAI CHAMAR A FUNÇÃo ListaRota");
+						
+					} else if(opcaoAdm == 7) {
+						entrou = false;
+						//break;
+						
+					} else {
+						System.out.println("opçao invalida, selecione uma valida");
+					}
+					
+					
+							
+				} 
+				//else {
+					//System.out.println("....");
+					
+			//	}
+			
 				
 				
-			}else if(opcaoMenu == 2) {
+			} else if(opcaoMenu == 2) {
 				System.out.println("##################################");
 				System.out.println("###### Comprar Passagem ##########");
 				System.out.println("##################################");
@@ -117,13 +169,26 @@ public class Principal {
 				
 				
 			} else if(opcaoMenu == 3) {
-				fim = true;
-			}else {
+				fimDoPrograma = true;
+			
+			//} else if(voltar){
+				//break;
+			} else {
 				System.out.println("Opcão invalidada, TENTE UMA OPÇAO VALIDA");
 			}
 		
-		}
 
+		
+		}while(!fimDoPrograma); 
+			
+		
+
+	
+	
+	
+	
+	
+	
 	}
 
 }

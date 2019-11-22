@@ -1,6 +1,10 @@
 package sistema.model;
 
-public class Cidade {
+import java.util.List;
+
+import sistema.crud.CrudCidade;
+
+public class Cidade implements CrudCidade {
 	
 	private int codigo;// tirar depois
 	private String nome;
@@ -47,7 +51,32 @@ public class Cidade {
 	public String toString() {
 		return "Cidade [codigo=" + codigo + ", nome=" + nome + ", estado=" + estado + "]";
 	}
+
+	@Override
+	public void addCidade(List<Cidade> cidades) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removerCidade(String nome) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buscarCidade(String nome) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizarCidade() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
-	// Methods
+	
 	
 }

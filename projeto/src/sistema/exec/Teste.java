@@ -19,6 +19,14 @@ import java.util.Scanner;
 public class Teste {
 
 	public static void main(String[] args) {
+		
+		
+		
+		
+		
+		
+		
+		
 		Scanner ler = new Scanner(System.in);
 		List<Cidade> listaCidades = new ArrayList<Cidade>();
 		List<Onibus> listaOnibus = new ArrayList<Onibus>();
@@ -30,9 +38,11 @@ public class Teste {
 		
 		addCidade(listaCidades);
 		addCidade(listaCidades);
-		addCidade(listaCidades);
+		//addCidade(listaCidades);
 		
-		for(Cidade i: listaCidades) System.out.println(i);
+		buscarCidade(listaCidades, "parambu");
+		
+		//for(Cidade i: listaCidades) System.out.println(i);
 		//System.out.println(listaCidades);
 		
 	}
@@ -55,6 +65,17 @@ public class Teste {
 		System.out.println("Digite o Estado");
 		c.get(c.size()-1).setEstado(ler.nextLine());	
 		
+	}
+	
+	public static void buscarCidade(List<Cidade> listaCidades, String nome) {
+		for(Cidade i: listaCidades) {
+			if(i.getNome().equals(nome)) {
+				System.out.println(i);
+				return;
+			} else {
+				System.out.println("Cidade nao encontrada");
+			}
+		}
 	}
 
 }

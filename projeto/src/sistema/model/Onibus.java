@@ -21,7 +21,8 @@ public class Onibus implements CrudOnibus {
 	// Constructors
 	
 	public Onibus() {
-		onibus = new ArrayList<Onibus>();
+		this.onibus = new ArrayList<Onibus>();
+		//this.poltronas = new Poltrona[this.qtdePoltronas];
 	}
 	
 	public Onibus(int codigoBus, Poltrona[] poltronas, int qtdePoltronas) {
@@ -58,10 +59,14 @@ public class Onibus implements CrudOnibus {
 	}
 		
 	public void preencherPoltronas() {
+		
+		this.poltronas = new Poltrona[this.qtdePoltronas];
+		
 		for(int i = 0; i < this.qtdePoltronas; i++) {
-			poltronas[i] = new Poltrona();
+			
+			this.poltronas[i] = new Poltrona();
 	
-			poltronas[i].setLocalizacao(0000+i);
+			this.poltronas[i].setLocalizacao((1+i));
 		}
 	}
 

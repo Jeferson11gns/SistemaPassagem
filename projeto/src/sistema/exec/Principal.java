@@ -76,7 +76,7 @@ public class Principal {
 					System.out.print("Adm: ");
 					String user = in.nextLine();
 					
-					System.out.print("seha: ");
+					System.out.print("senha: ");
 					String senha = in.nextLine();
 					
 					if(user.equals(adm.getLogin()) && senha.equals(adm.getSenha())) {
@@ -167,9 +167,14 @@ public class Principal {
 						listaOnibus.add(new Onibus());
 						listaOnibus.get(listaOnibus.size()-1).addOnibus(listaOnibus);
 						
+						//preencher poltronas
+						listaOnibus.get(listaOnibus.size()-1).preencherPoltronas();
+						
 						
 						//colocando o onibus na rota
 						listaRotas.get(listaRotas.size()-1).setOnibus(listaOnibus.get(listaOnibus.size()-1));
+						
+						
 						
 						
 					} else if(opcaoAdm == 6) {
@@ -177,7 +182,7 @@ public class Principal {
 						System.out.println("Digite a cidade de origem da roda a ser removida: ");
 						String cidadeOrigem = in.nextLine();
 						
-						System.out.println("Digite a cidade de origem da roda a ser removida: ");
+						System.out.println("Digite a cidade de destino da roda a ser removida: ");
 						String cidadeDestino = in.nextLine();
 						
 						listaRotas.get(listaRotas.size()-1).removerRota(cidadeOrigem, cidadeDestino);

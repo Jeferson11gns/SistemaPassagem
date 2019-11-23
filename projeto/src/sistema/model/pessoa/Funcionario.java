@@ -101,10 +101,10 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 		
 		System.out.println("Digite a data de nascimento do Funcionario: ");
 		String auxiliar[] = in.nextLine().split("/");
-
-        this.funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[2]), 
+		
+        this.funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
         														Integer.parseInt(auxiliar[1]),
-        														Integer.parseInt(auxiliar[0]));
+        														Integer.parseInt(auxiliar[2]));
         
         System.out.println("Digite o salario do funcionario");
         this.funcionarios.get(funcionarios.size()-1).setSalario(Double.parseDouble(in.nextLine()));

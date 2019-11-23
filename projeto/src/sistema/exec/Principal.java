@@ -46,8 +46,10 @@ public class Principal {
 		
 		int opcaoMenu;
 		int opcaoAdm;
+		int menuFunc;
 		
-		boolean entrou = false;
+		boolean entrouFunc = true;
+		boolean entrouAdm = false;
 		boolean fimDoPrograma = false;
 	
 		do {
@@ -80,14 +82,14 @@ public class Principal {
 					String senha = in.nextLine();
 					
 					if(user.equals(adm.getLogin()) && senha.equals(adm.getSenha())) {
-						entrou = true;
+						entrouAdm = true;
 					} else {
 						System.out.println("SENHA OU USUARIO INCORRETOS.");
 					}
 					
-				 } while(!entrou);	
+				 } while(!entrouAdm);	
 					
-				 while(entrou) {
+				 while(entrouAdm) {
 						
 						
 					System.out.println("\n################################");
@@ -164,18 +166,23 @@ public class Principal {
 						
 						
 						
+						listaPassagens.add(new Passagem());
+
+						
 						listaOnibus.add(new Onibus());
 						listaOnibus.get(listaOnibus.size()-1).addOnibus(listaOnibus);
 						
 						//preencher poltronas
-						listaOnibus.get(listaOnibus.size()-1).preencherPoltronas();
+						listaOnibus.get(listaOnibus.size()-1).preencherPoltronas(listaPassagens);
 						
 						
 						//colocando o onibus na rota
 						listaRotas.get(listaRotas.size()-1).setOnibus(listaOnibus.get(listaOnibus.size()-1));
 						
 						
-						
+						//preendchendo a passagem
+						listaPassagens.get(listaPassagens.size()-1).setRota(listaRotas.get(listaRotas.size()-1));
+					
 						
 					} else if(opcaoAdm == 6) {
 						
@@ -194,8 +201,8 @@ public class Principal {
 						}
 						
 					} else if(opcaoAdm == 8) {
-						entrou = false;
-						//break;
+						entrouAdm = false;
+						
 						
 					} else {
 						System.out.println("opçao invalida, selecione uma valida");
@@ -204,45 +211,92 @@ public class Principal {
 					
 							
 				} 
-				//else {
-					//System.out.println("....");
-					
-			//	}
 			
 				
 				
 			} else if(opcaoMenu == 2) {
-				System.out.println("##################################");
-				System.out.println("###### Comprar Passagem ##########");
-				System.out.println("##################################");
-				System.out.print("Cidade de origem: ");
-				String cidadeOrigem = in.nextLine();
 				
-				System.out.print("Cidade de destino: ");
-				String cidadeDestino = in.nextLine();
-				
-				//vai chamar o metodo de buscar rota, passando como parametro a cidade de origem e de destino
-				// vai mostrar as rotas possiveis se tiver ai ele vai poder selecionar a que ele quer
-				
-				System.out.println("----Rota tal mostrando todos os atributos dela--------");
-				
-				System.out.print("Digite o horario que ele vai querer viajar: ");
-				String horario = in.nextLine(); //vai pegar o horaio
-				
-				System.out.println("##################################");
-				System.out.println("###### dados do Usuario ##########");
-				System.out.println("##################################");
-				System.out.println("----colocar cpf nome rg email (VAI PREENCHER O OBJETO DE PASSAGEIRO)--------");// vai preencher o usuario colocando cpf nome e por ai vai
-				// ai vai buscar a rota usando as variaveis que coletou vai buscar usando cidade de origem e destino e horario
-				// addRota(que foi atraves dessas variaes) a passagem
-				// e coloca passagem em usuario e usuario na passagem
-				
-				
+				do {
+					System.out.println("\n################################");
+					System.out.println("######  Funcionario     #########");
+					System.out.println("################################\n");
+					System.out.println("1- Comprar passagem\n" +
+										"2- Voltar ao menu inicial");
+					try {
+						menuFunc = Integer.parseInt(in.nextLine());
+					} catch(NumberFormatException e) {
+						menuFunc = 3;
+					}
+					
+					if(menuFunc == 1) {
+					
+						System.out.println("##################################");
+						System.out.println("###### Comprar Passagem ##########");
+						System.out.println("##################################");
+						
+						
+						System.out.print("Cidade de origem: ");
+						String cidadeOrigem = in.nextLine();
+						
+						System.out.print("Cidade de destino: ");
+						String cidadeDestino = in.nextLine();
+						
+						listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino);
+						
+						
+						System.out.print("Digite o horario que ele vai querer viajar: ");
+						String horario = in.nextLine(); 
+						
+						//arrumar para nao deixar nenhum codigo de onibus ser o
+						int idOnibus = 0;
+						Rota contr = new Rota();
+						
+						for(Rota x: listaRotas) {
+							if(x.getHorario().equals(horario)) {
+								idOnibus = x.getOnibus().getCodigoBus();
+								contr = x;
+							}
+						}
+					
+						
+						boolean taVazia = listaOnibus.get(listaOnibus.size()-1).poltronasVazias(idOnibus);
+						if(taVazia) {
+							
+							System.out.println("##################################");
+							System.out.println("###### dados do Usuario ##########");
+							System.out.println("##################################");
+							
+							System.out.println("Digite a cadeira que ele vai querer ir: ");
+							int cadeira = Integer.parseInt(in.nextLine());
+							
+							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
+							teste.mudaStatusPassagem(cadeira);
+
+							try {
+								listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
+								//adcionar passageiro a passagem
+								listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
+								
+							} catch (Exception e){
+								break;
+							}
+							
+							
+							
+						}	
+					
+					} else if(menuFunc == 2) {
+						entrouFunc = false;
+					} else {
+						System.out.println("opção invalida, DIGITE UMA VALIDA");
+					}
+					
+				} while (entrouFunc);	
+		
+			
 			} else if(opcaoMenu == 3) {
 				fimDoPrograma = true;
-			
-			//} else if(voltar){
-				//break;
+
 			} else {
 				System.out.println("Opcão invalidada, TENTE UMA OPÇAO VALIDA");
 			}

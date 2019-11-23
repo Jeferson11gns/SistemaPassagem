@@ -136,13 +136,13 @@ public class Rota implements CrudRota {
 	@Override
 	public void buscarRota(String cidadeOrigem, String cidadeDestino) {
 		
-		int controle = 1;
+		int controle = 0;
 		
 		for(Rota x: this.rotas) {
 			if(x.getOrigem().getNome().equals(cidadeOrigem) && x.getDestino().getNome().equals(cidadeDestino)) {
 				System.out.println(x);
-				return;
-			}else {
+				controle = 1;
+			}else if(controle != 1){
 				controle = 0;
 			}
 		}

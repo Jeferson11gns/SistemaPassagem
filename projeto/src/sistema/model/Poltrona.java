@@ -5,6 +5,9 @@ import sistema.model.pessoa.Passageiro;
 public class Poltrona {
 	
 	private int localizacao;
+	private Passagem passagem;
+	
+	//ja ja tirar pq nem vai precisar
 	private Passageiro passageiro;
 	
 	// Constructors
@@ -33,6 +36,22 @@ public class Poltrona {
 	
 	public void setPassageiro(Passageiro passageiro) {
 		this.passageiro = passageiro;
+	}
+	
+	public Passagem getPassagem() {
+		return passagem;
+	}
+
+	public void setPassagem(Passagem passagem) {
+		this.passagem = passagem;
+	}
+	
+	public void mudaStatusPassagem(int localizacao) {
+		if(this.localizacao == localizacao) {
+			this.passagem.setValida(false);
+			//System.out.println(passagem);
+		}
+		
 	}
 	
 	@Override

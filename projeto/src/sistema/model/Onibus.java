@@ -18,10 +18,12 @@ public class Onibus implements CrudOnibus {
 	
 	private List<Onibus> onibus; 
 	
+	private List<Passagem> passagens;
 	// Constructors
 	
 	public Onibus() {
 		this.onibus = new ArrayList<Onibus>();
+		this.passagens = new ArrayList<Passagem>();
 		//this.poltronas = new Poltrona[this.qtdePoltronas];
 	}
 	
@@ -54,11 +56,23 @@ public class Onibus implements CrudOnibus {
 		return qtdePoltronas;
 	}
 	
+	
+	
 	public void setQtdePoltronas(int qtdePoltronas) {
 		this.qtdePoltronas = qtdePoltronas;
 	}
 		
-	public void preencherPoltronas() {
+	public Poltrona pegarPoltrona(int localizador) {
+		for(int i = 0; i < this.qtdePoltronas; i++) {
+			if(this.poltronas[i].getLocalizacao() == localizador) {
+				return this.poltronas[i];
+			}
+		}
+		return poltronas[0];
+		
+	}
+	
+	public void preencherPoltronas(List<Passagem> passagens) {
 		
 		this.poltronas = new Poltrona[this.qtdePoltronas];
 		
@@ -67,9 +81,54 @@ public class Onibus implements CrudOnibus {
 			this.poltronas[i] = new Poltrona();
 	
 			this.poltronas[i].setLocalizacao((1+i));
+			
+			
+			
+			this.passagens = passagens;
+			
+			//criar um loclizador muito pseudo aleiatorio
+			int aleatoria = (i+1) + (i*2) * (i * 30); 
+			
+			this.passagens.get(passagens.size()-1).setLocalizador(aleatoria);
+			this.passagens.get(passagens.size()-1).setValida(true);
+
+			
+			this.poltronas[i].setPassagem(this.passagens.get(passagens.size()-1));
 		}
 	}
-
+	
+	public boolean poltronasVazias(int idOnibus) {
+		
+		int controle = 0;
+		
+		Onibus aux = new Onibus();
+		for(Onibus x: this.onibus) {
+			if(x.getCodigoBus() == idOnibus) {
+				aux = x;
+				break;
+			}
+		}
+		
+		
+		for(int i = 0; i < this.qtdePoltronas; i++) {	
+			if(this.poltronas[i].getPassagem().isValida() == true && aux.getCodigoBus() == idOnibus) {
+				System.out.println("A poltrona " + poltronas[i].getLocalizacao() + "esta vazia");
+				controle = 1;		
+				
+			} else if(controle != 1) {
+				controle = 0;
+			}
+			
+		}
+		
+		if(controle == 0) {
+			System.out.println("NAO tem poltronas VAZIA");
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Onibus [codigoBus=" + codigoBus + ", poltronas=" + Arrays.toString(poltronas) + ", qtdePoltronas="
@@ -93,7 +152,7 @@ public class Onibus implements CrudOnibus {
 
 	@Override
 	public void removerOnibus(int codigoBus) {
-int controle = 1;
+		int controle = 1;
 		
 		for(Onibus x: this.onibus) {
 			if(x.getCodigoBus() == codigoBus) {
@@ -129,6 +188,8 @@ int controle = 1;
 		}
 		
 	}
+	
+	
 
 	@Override
 	public void atualizarOnibus() {

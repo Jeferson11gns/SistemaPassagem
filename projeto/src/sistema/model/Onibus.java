@@ -82,18 +82,28 @@ public class Onibus implements CrudOnibus {
 	
 			this.poltronas[i].setLocalizacao((1+i));
 			
+			this.poltronas[i].setVazia(true);
 			
+			/**NUM APAGUE NAO
 			
 			this.passagens = passagens;
 			
 			//criar um loclizador muito pseudo aleiatorio
-			int aleatoria = (i+1) + (i*2) * (i * 30); 
+			int aleatoria = (i+1) + (i*2) * (i * 3); 
 			
-			this.passagens.get(passagens.size()-1).setLocalizador(aleatoria);
-			this.passagens.get(passagens.size()-1).setValida(true);
+			this.poltronas[i].setPassagem(this.passagens.get(passagens.size()-(i+1)));
+			
+			this.poltronas[i].getPassagem().setLocalizador(aleatoria);
+			this.poltronas[i].getPassagem().setValida(true);
+			
+			
+			//APAGAR
+			//this.passagens.get(passagens.size()-(1)).setLocalizador(aleatoria);
+			//this.passagens.get(passagens.size()-(1)).setValida(true);
 
 			
 			this.poltronas[i].setPassagem(this.passagens.get(passagens.size()-1));
+			**/
 		}
 	}
 	
@@ -110,9 +120,12 @@ public class Onibus implements CrudOnibus {
 		}
 		
 		
+		Poltrona[] analise = aux.getPoltronas();
+		
 		for(int i = 0; i < this.qtdePoltronas; i++) {	
-			if(this.poltronas[i].getPassagem().isValida() == true && aux.getCodigoBus() == idOnibus) {
-				System.out.println("A poltrona " + poltronas[i].getLocalizacao() + "esta vazia");
+			
+			if(analise[i].isVazia()) {
+				System.out.println("A poltrona " + analise[i].getLocalizacao() + " esta vazia");
 				controle = 1;		
 				
 			} else if(controle != 1) {
@@ -144,10 +157,7 @@ public class Onibus implements CrudOnibus {
 		
 		System.out.println("Digite a quantidade de poltronas");
 		this.onibus.get(onibus.size()-1).setQtdePoltronas(Integer.parseInt(in.nextLine()));
-		
-		//this.onibus.get(onibus.size()-1).preencherPoltronas();
-		
-		
+	
 	}
 
 	@Override

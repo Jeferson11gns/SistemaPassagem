@@ -164,13 +164,18 @@ public class Principal {
 						
 						listaRotas.get(listaRotas.size()-1).addRota(listaRotas);
 						
-						
-						
-						listaPassagens.add(new Passagem());
 
 						
 						listaOnibus.add(new Onibus());
 						listaOnibus.get(listaOnibus.size()-1).addOnibus(listaOnibus);
+						
+						
+						
+						//criar passagem equivalente cada poltrona
+						for(int i = 0; i < listaOnibus.get(listaOnibus.size()-1).getQtdePoltronas(); i++) {
+							listaPassagens.add(new Passagem());
+						}
+						
 						
 						//preencher poltronas
 						listaOnibus.get(listaOnibus.size()-1).preencherPoltronas(listaPassagens);
@@ -260,6 +265,7 @@ public class Principal {
 					
 						
 						boolean taVazia = listaOnibus.get(listaOnibus.size()-1).poltronasVazias(idOnibus);
+						
 						if(taVazia) {
 							
 							System.out.println("##################################");
@@ -272,16 +278,15 @@ public class Principal {
 							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
 							teste.mudaStatusPassagem(cadeira);
 
-							try {
-								listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
-								//adcionar passageiro a passagem
-								listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
+							
+							listaPassageiros.add(new Passageiro());
+							listaPassagens.add(new Passagem());
+							
+							listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
+							//adcionar passageiro a passagem
+							listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
 								
-							} catch (Exception e){
-								break;
-							}
-							
-							
+						
 							
 						}	
 					

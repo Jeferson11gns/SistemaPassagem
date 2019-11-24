@@ -6,7 +6,7 @@ public class Poltrona {
 	
 	private int localizacao;
 	private Passagem passagem;
-	
+	private boolean vazia;
 	//ja ja tirar pq nem vai precisar
 	private Passageiro passageiro;
 	
@@ -22,6 +22,14 @@ public class Poltrona {
 	
 	// Getters and Setters
 	
+	public boolean isVazia() {
+		return vazia;
+	}
+
+	public void setVazia(boolean vazia) {
+		this.vazia = vazia;
+	}
+
 	public int getLocalizacao() {
 		return localizacao;
 	}
@@ -48,15 +56,15 @@ public class Poltrona {
 	
 	public void mudaStatusPassagem(int localizacao) {
 		if(this.localizacao == localizacao) {
-			this.passagem.setValida(false);
-			//System.out.println(passagem);
+			this.vazia = false;
 		}
 		
 	}
 	
 	@Override
 	public String toString() {
-		return "Poltrona [localizacao=" + localizacao + ", passageiro=" + passageiro + "]";
+		return "Poltrona [localizacao=" + localizacao + ", passagem=" + passagem + ", vazia=" + vazia + ", passageiro="
+				+ passageiro + "]";
 	}
 	
 	// Methods

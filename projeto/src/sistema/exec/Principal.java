@@ -47,6 +47,7 @@ public class Principal {
 		int opcaoMenu;
 		int opcaoAdm;
 		int menuFunc;
+		String opmenu;
 		
 		boolean entrouFunc = true;
 		boolean entrouAdm = false;
@@ -58,8 +59,8 @@ public class Principal {
 			System.out.println("######       Menu      #########");
 			System.out.println("################################");
 			System.out.println("1- Entrar como Adminstrador\n" +
-								"2- Entrar como funcionario\n"+ 
-								"3- fechar programa");
+								"2- Entrar como Funcionario\n"+ 
+								"3- Fechar programa");
 			try {
 				opcaoMenu = Integer.parseInt(in.nextLine());
 			}
@@ -71,20 +72,20 @@ public class Principal {
 				
 				 do{
 					
-					System.out.println("\n################################");
-					System.out.println("######      login      #########");
-					System.out.println("################################\n");
+					 System.out.println("\n################################");
+						System.out.println("######  Administrador  #########");
+						System.out.println("################################\n");
 					
-					System.out.print("Adm: ");
+					System.out.print("Login: ");
 					String user = in.nextLine();
 					
-					System.out.print("senha: ");
+					System.out.print("Senha: ");
 					String senha = in.nextLine();
 					
 					if(user.equals(adm.getLogin()) && senha.equals(adm.getSenha())) {
 						entrouAdm = true;
 					} else {
-						System.out.println("SENHA OU USUARIO INCORRETOS.");
+						System.out.println("Senha ou Login incorretos.");
 					}
 					
 				 } while(!entrouAdm);	
@@ -97,17 +98,17 @@ public class Principal {
 					System.out.println("################################\n");
 					
 					System.out.println("######  Relacionado ao Funcionario  #########\n");
-					System.out.println("1- Adicioar Funcionario\n" +
-							"2- Remover funcionario\n"+
-							"3- lista Funcionario\n"+ 
-							"4 - Atualizar funcionario\n\n");
+					System.out.println("1 - Adicionar Funcionario\n" +
+							"2 - Remover Funcionario\n"+
+							"3 - Listar Funcionarios\n"+ 
+							"4 - Atualizar Funcionario\n\n");
 							
 					System.out.println("######  Relacionado a Rota  #########\n");
 							
-					System.out.println("5- Adicionar rota\n" +
-							"6- remover rota\n" +
-							"7- ver lisita de rotas\n" +
-							"8 - voltar para o menu inicial");
+					System.out.println("5 - Adicionar rota\n" +
+							"6 - Remover rota\n" +
+							"7 - Ver Lista de Rotas\n" +
+							"8 - Voltar para o Menu Inicial");
 					try {
 						opcaoAdm = Integer.parseInt(in.nextLine());
 					}
@@ -122,7 +123,7 @@ public class Principal {
 						listaFuncionarios.get(listaFuncionarios.size()-1).addFuncionario(listaFuncionarios);
 						
 					} else if(opcaoAdm == 2) {
-						System.out.println("Digite o cpf do funcionario que quer remove:");
+						System.out.println("Digite o cpf do Funcionário que deseja remover:");
 						String cpf = in.nextLine();
 						
 						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf);
@@ -133,10 +134,11 @@ public class Principal {
 						for(Funcionario x: listaFuncionarios) {
 							System.out.println(x);
 						}
-						
+						System.out.println("Pressione qualquer tecla para continuar");
+						opmenu = in.nextLine();
 					} else if(opcaoAdm == 4) {
 						
-						System.out.println("Digite o cpf do funcionario que voce quer atualizar: ");
+						System.out.println("Digite o cpf do Funcionário que deseja atualizar: ");
 						String cpf = in.nextLine();
 						
 						listaFuncionarios.get(listaFuncionarios.size()-1).atualizarFuncionario(cpf);
@@ -146,7 +148,7 @@ public class Principal {
 						listaRotas.add(new Rota());
 						
 						
-						System.out.println("Digite a cidade de origem");
+						System.out.println("Digite a Cidade de Origem");
 						listaCidades.add(new Cidade());
 						listaCidades.get(listaCidades.size()-1).addCidade(listaCidades);
 						
@@ -154,7 +156,7 @@ public class Principal {
 						listaRotas.get(listaRotas.size()-1).setOrigem(listaCidades.get(listaCidades.size()-1));
 						
 						
-						System.out.println("Digite a cidade de Destino");
+						System.out.println("Digite a Cidade de Destino");
 						listaCidades.add(new Cidade());
 						listaCidades.get(listaCidades.size()-1).addCidade(listaCidades);
 						
@@ -191,10 +193,10 @@ public class Principal {
 						
 					} else if(opcaoAdm == 6) {
 						
-						System.out.println("Digite a cidade de origem da roda a ser removida: ");
+						System.out.println("Digite a Cidade de Origem da Rota a ser removida: ");
 						String cidadeOrigem = in.nextLine();
 						
-						System.out.println("Digite a cidade de destino da roda a ser removida: ");
+						System.out.println("Digite a Cidade de Destino da Rota a ser removida: ");
 						String cidadeDestino = in.nextLine();
 						
 						listaRotas.get(listaRotas.size()-1).removerRota(cidadeOrigem, cidadeDestino);
@@ -204,13 +206,15 @@ public class Principal {
 						for(Rota x: listaRotas) {
 							System.out.println(x);
 						}
+						System.out.println("Pressione qualquer tecla para continuar");
+						opmenu = in.nextLine();
 						
 					} else if(opcaoAdm == 8) {
 						entrouAdm = false;
 						
 						
 					} else {
-						System.out.println("opçao invalida, selecione uma valida");
+						System.out.println("Opção inválida, selecione uma opção válida");
 					}
 					
 					
@@ -223,10 +227,10 @@ public class Principal {
 				
 				do {
 					System.out.println("\n################################");
-					System.out.println("######  Funcionario     #########");
+					System.out.println("######  Funcionário     #########");
 					System.out.println("################################\n");
-					System.out.println("1- Comprar passagem\n" +
-										"2- Voltar ao menu inicial");
+					System.out.println("1 - Vender Passagem\n" +
+										"2 - Voltar ao menu inicial");
 					try {
 						menuFunc = Integer.parseInt(in.nextLine());
 					} catch(NumberFormatException e) {
@@ -236,20 +240,20 @@ public class Principal {
 					if(menuFunc == 1) {
 					
 						System.out.println("##################################");
-						System.out.println("###### Comprar Passagem ##########");
+						System.out.println("###### Vender Passagem ##########");
 						System.out.println("##################################");
 						
 						
-						System.out.print("Cidade de origem: ");
+						System.out.print("Cidade de Origem: ");
 						String cidadeOrigem = in.nextLine();
 						
-						System.out.print("Cidade de destino: ");
+						System.out.print("Cidade de Destino: ");
 						String cidadeDestino = in.nextLine();
 						
 						listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino);
 						
 						
-						System.out.print("Digite o horario que ele vai querer viajar: ");
+						System.out.print("Digite o horário de partida: ");
 						String horario = in.nextLine(); 
 						
 						//arrumar para nao deixar nenhum codigo de onibus ser o
@@ -269,10 +273,10 @@ public class Principal {
 						if(taVazia) {
 							
 							System.out.println("##################################");
-							System.out.println("###### dados do Usuario ##########");
+							System.out.println("###### Dados do Passageiro ##########");
 							System.out.println("##################################");
 							
-							System.out.println("Digite a cadeira que ele vai querer ir: ");
+							System.out.println("Digite o número da Poltrona: ");
 							int cadeira = Integer.parseInt(in.nextLine());
 							
 							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
@@ -293,7 +297,7 @@ public class Principal {
 					} else if(menuFunc == 2) {
 						entrouFunc = false;
 					} else {
-						System.out.println("opção invalida, DIGITE UMA VALIDA");
+						System.out.println("Opção inválida, digite uma opção válida");
 					}
 					
 				} while (entrouFunc);	
@@ -303,7 +307,7 @@ public class Principal {
 				fimDoPrograma = true;
 
 			} else {
-				System.out.println("Opcão invalidada, TENTE UMA OPÇAO VALIDA");
+				System.out.println("Opção inválida, digite uma opção válida");
 			}
 		
 

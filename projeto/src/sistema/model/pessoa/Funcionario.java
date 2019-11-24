@@ -48,7 +48,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	public void setDataAdmissao(int dia, int mes, int ano) {
 		dataAdmissao.set(Calendar.DAY_OF_MONTH, dia);
 		dataAdmissao.set(Calendar.MONTH, mes);
-		dataAdmissao.set(Calendar.YEAR, ano);	
+		dataAdmissao.set(Calendar.YEAR, ano);
 	}
 
 	public double getSalario() {
@@ -90,25 +90,38 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 		
 		this.funcionarios = funcionarios;
 		
-		System.out.println("Digite o nome do Funcionario");
+		System.out.println("Digite o Login do Funcionário");
+		this.funcionarios.get(funcionarios.size()-1).setLogin(in.nextLine());
+		
+		System.out.println("Digite a senha do Funcionário");
+		this.funcionarios.get(funcionarios.size()-1).setSenha(in.nextLine());
+		
+		System.out.println("Digite o nome do Funcionário");
 		this.funcionarios.get(funcionarios.size()-1).setNome(in.nextLine());
 		
-		System.out.println("Digite o cpf do Funcionario");
+		System.out.println("Digite o cpf do Funcionário");
 		this.funcionarios.get(funcionarios.size()-1).setCpf(in.nextLine());
 		
-		System.out.println("Digite o email Funcionario");
+		System.out.println("Digite o email Funcionário");
 		this.funcionarios.get(funcionarios.size()-1).setEmail(in.nextLine());
 		
-		System.out.println("Digite a data de nascimento do Funcionario: ");
+		System.out.println("Digite a data de nascimento do Funcionário: ");
 		String auxiliar[] = in.nextLine().split("/");
 		
+		try {
         this.funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
         														Integer.parseInt(auxiliar[1]),
         														Integer.parseInt(auxiliar[2]));
+		}catch(NumberFormatException e) {
+			System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
+		}
         
         System.out.println("Digite o salario do funcionario");
+        try {
         this.funcionarios.get(funcionarios.size()-1).setSalario(Double.parseDouble(in.nextLine()));
-        
+        }catch(NumberFormatException e) {
+        	System.out.println("Salário inválido, o salário setado como R$0.0, atualize mais tarde");
+        }
 	}
 	
 	@Override
@@ -147,7 +160,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 			}
 			
 			if(controle == 0) {
-				System.out.println("Funcionario nao encontrados");
+				System.out.println("Funcionario nao encontrado");
 			}
 			
 		}
@@ -161,9 +174,25 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 		
 		for(Funcionario x: this.funcionarios) {
 			if(x.getCpf().equals(cpf)) {
-
-				System.out.println("Digiteo novo salario: ");
-				x.setSalario(Double.parseDouble(in.nextLine()));
+				
+				System.out.println("Digite a data de nasc: ");
+				String auxiliar[] = in.nextLine().split("/");
+				try {
+			        x.setDataNasc(Integer.parseInt(auxiliar[0]), 
+			        				Integer.parseInt(auxiliar[1]),
+			        				Integer.parseInt(auxiliar[2]));
+					}catch(NumberFormatException e) {
+						System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
+					}
+				
+				System.out.println("Digite o novo salario: ");
+				try {
+			        x.setSalario(Double.parseDouble(in.nextLine()));
+			        }catch(NumberFormatException e) {
+			        	System.out.println("Salário inválido, o salário setado como R$0.0, atualize mais tarde");
+			        }
+				System.out.println("Digite a nova senha: ");
+				x.setSenha(in.nextLine());
 				
 				return;
 			} else {
@@ -171,7 +200,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 			}
 			
 			if(controle == 0) {
-				System.out.println("Funcionario nao encontrados");
+				System.out.println("Funcionario nao encontrado");
 			}
 			
 		}

@@ -1,0 +1,88 @@
+package sistema.model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import sistema.crud.CrudCidade;
+
+public class Cidade implements CrudCidade {
+	
+	Scanner in = new Scanner(System.in);
+	
+	
+	private String nome;
+	private String estado;
+	
+	private List<Cidade> cidades;
+	// Constructor
+	
+	public Cidade() {
+		cidades = new ArrayList<Cidade>();
+	}
+	
+	public Cidade(String nome, String estado) {
+		super();
+		this.nome = nome;
+		this.estado = estado;
+	}
+	
+	// Getters and Setters
+	
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+	
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	@Override
+	public String toString() {
+		return "Cidade [codigo=" + codigo + ", nome=" + nome + ", estado=" + estado + "]";
+	}
+
+	@Override
+	public void addCidade(List<Cidade> cidades) {
+		
+		this.cidades = cidades;
+		
+		System.out.println("Digite o nome da cidade: ");
+		cidades.get(cidades.size()-1).setNome(in.nextLine());
+		
+		System.out.println("Fica em qual estado: ");
+		cidades.get(cidades.size()-1).setEstado(in.nextLine());
+		
+	}
+
+	@Override
+	public void removerCidade(String nome) {
+		
+		
+	}
+
+	@Override
+	public void buscarCidade(String nome) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizarCidade() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+}

@@ -134,7 +134,7 @@ public class Rota implements CrudRota {
 	}
 
 	@Override
-	public void buscarRota(String cidadeOrigem, String cidadeDestino) {
+	public boolean buscarRota(String cidadeOrigem, String cidadeDestino) {
 		
 		int controle = 0;
 		
@@ -148,7 +148,10 @@ public class Rota implements CrudRota {
 		}
 			
 		if(controle == 0) {
-			System.out.println("A rota nao pode ser removido");
+			System.out.println("A rota nao foi Encontrada");
+			return false;
+		} else {
+			return true;
 		}
 		
 		

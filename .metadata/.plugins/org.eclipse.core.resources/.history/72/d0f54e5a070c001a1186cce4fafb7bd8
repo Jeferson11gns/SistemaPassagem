@@ -1,0 +1,10 @@
+package sistema.crud;
+
+import java.util.list;
+import sistem.model.pessoa.Funcionario;
+
+public interface CrudFuncionario {
+	
+	public void addFuncionario(list <Funcionario> funcionarios);
+	
+}

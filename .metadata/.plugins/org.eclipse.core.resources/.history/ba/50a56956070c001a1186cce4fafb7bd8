@@ -1,0 +1,7 @@
+package sistema.crud;
+
+public interface CrudFuncionario {
+	
+	public void addFuncionario(list <Funcionario> funcionarios);
+	
+}

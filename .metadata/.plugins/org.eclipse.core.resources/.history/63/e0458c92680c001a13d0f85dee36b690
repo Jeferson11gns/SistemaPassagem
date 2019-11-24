@@ -1,0 +1,5 @@
+package sistema.exec;
+
+public interface CrudPoltrona {
+
+}

@@ -1,0 +1,15 @@
+package sistema.crud;
+
+import java.util.List;
+
+import sistema.model.Onibus;
+
+public interface CrudOnibus {
+
+	public void addCidade(List <Onibus> onibus);
+	public void removerCidade(String nome);
+	public void buscarCidade(String nome);
+	public void atualizarCidade();
+	
+	
+}

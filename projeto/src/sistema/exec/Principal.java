@@ -250,11 +250,17 @@ public class Principal {
 						System.out.print("Cidade de Destino: ");
 						String cidadeDestino = in.nextLine();
 						
-						listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino);
+						boolean foiCerto = listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino);
 						
-						
-						System.out.print("Digite o horário de partida: ");
-						String horario = in.nextLine(); 
+						String horario;
+						if(foiCerto) {
+							System.out.print("Digite o horário de partida: ");
+							horario = in.nextLine(); 
+						}else {
+							System.out.println("Entre de novo e Digite uma rota valida");
+							String a = in.nextLine();
+							continue;
+						}
 						
 						//arrumar para nao deixar nenhum codigo de onibus ser o
 						int idOnibus = 0;

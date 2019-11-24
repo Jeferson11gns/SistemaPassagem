@@ -1,0 +1,15 @@
+package sistema.crud;
+
+import java.util.List;
+
+import sistema.model.Passagem;
+
+public interface CrudPassagem {
+	
+	public void addCidade(List <Passagem> passagens);
+	public void removerCidade(int codigoBus);
+	public void buscarCidade(int codigoBus);
+	public void atualizarCidade();
+	
+	
+}

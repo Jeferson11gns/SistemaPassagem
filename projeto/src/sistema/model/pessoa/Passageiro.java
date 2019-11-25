@@ -46,6 +46,8 @@ public class Passageiro extends Usuario implements CrudPassageiro {
 	@Override
 	public void addPassageiro(List<Passageiro> passageiros) {
 		
+		this.passageiros = passageiros;
+		
 		System.out.println("Digite o nome do Passageiro: ");
 		this.passageiros.get(passageiros.size()-1).setNome(in.nextLine());
 		

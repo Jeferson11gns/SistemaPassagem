@@ -274,7 +274,7 @@ public class Principal {
 						}
 					
 						
-						boolean taVazia = listaOnibus.get(listaOnibus.size()-1).poltronasVazias(idOnibus);
+						boolean taVazia = contr.getOnibus().poltronasVazias(idOnibus);
 						
 						if(taVazia) {
 							
@@ -286,18 +286,23 @@ public class Principal {
 							int cadeira = Integer.parseInt(in.nextLine());
 							
 							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
+							if(teste == null) {
+								System.out.println("Cadeira invalida");
+								continue;
+							}
 							teste.mudaStatus(cadeira);
-
+							
 							
 							listaPassageiros.add(new Passageiro());
 							listaPassagens.add(new Passagem());
 							
 							listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
+							
 							//adcionar passageiro a passagem
 							listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
-								
+							listaPassagens.get(listaPassagens.size()-1).setValida(true);	
 						
-							
+							System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
 						}	
 					
 					} else if(menuFunc == 2) {

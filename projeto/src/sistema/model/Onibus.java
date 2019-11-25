@@ -71,7 +71,7 @@ public class Onibus implements CrudOnibus {
 				return this.poltronas[i];
 			}
 		}
-		return poltronas[0];
+		return null;
 		
 	}
 	
@@ -125,7 +125,7 @@ public class Onibus implements CrudOnibus {
 		
 		Poltrona[] analise = aux.getPoltronas();
 		
-		for(int i = 0; i < this.qtdePoltronas; i++) {	
+		for(int i = 0; i < analise.length; i++) {	
 			
 			if(analise[i].isVazia()) {
 				System.out.println("A poltrona " + analise[i].getLocalizacao() + " esta vazia");

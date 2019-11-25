@@ -47,10 +47,7 @@ public class Cidade implements CrudCidade {
 		this.estado = estado;
 	}
 	
-	@Override
-	public String toString() {
-		return "Cidade [ nome=" + nome + ", estado=" + estado + "]";
-	}
+	// Methods
 
 	@Override
 	public void addCidade(List<Cidade> cidades) {
@@ -112,6 +109,10 @@ public class Cidade implements CrudCidade {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Cidade [ nome=" + nome + ",\n estado=" + estado + "]";
+	}
 	
 	
 	

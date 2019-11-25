@@ -13,12 +13,12 @@ public class Rota implements CrudRota {
 	
 	Scanner in = new Scanner(System.in);
 	
-	protected Onibus onibus;
-	protected Cidade origem;
-	protected Cidade destino;
-	protected String tempoViagem;
-	protected String horario;
-	protected double preco;
+	private Onibus onibus;
+	private Cidade origem;
+	private Cidade destino;
+	private String tempoViagem;
+	private String horario;
+	private double preco;
 	
 	private List<Rota> rotas;
 	
@@ -88,11 +88,7 @@ public class Rota implements CrudRota {
 		this.preco = preco;
 	}
 	
-	@Override
-	public String toString() {
-		return "Rota [onibus=" + onibus + ", origem=" + origem + ", destino=" + destino + ", tempoViagem=" + tempoViagem
-				+ ", horario=" + horario + ", preco=" + preco + "]";
-	}
+	// Methods
 
 	@Override
 	public void addRota(List<Rota> rotas) {
@@ -104,8 +100,12 @@ public class Rota implements CrudRota {
 		this.rotas.get(rotas.size()-1).setHorario(in.nextLine());
 		
 		System.out.println("Digite o preco");
-		this.rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
-		
+		try {
+			this.rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
+		}catch(NumberFormatException e) {
+			System.out.println("Valor inválido, o valor default R$30.99 foi adicionado");
+			this.rotas.get(rotas.size()-1).setPreco(30.99);
+		}
 		System.out.println("Digite o tempo de viagem");
 		this.rotas.get(rotas.size()-1).setTempoViagem(in.nextLine());
 		
@@ -148,10 +148,13 @@ public class Rota implements CrudRota {
 		}
 			
 		if(controle == 0) {
+			System.out.println("A rota não identificada");
+
 			System.out.println("A rota nao foi Encontrada");
 			return false;
 		} else {
 			return true;
+
 		}
 		
 		
@@ -163,7 +166,12 @@ public class Rota implements CrudRota {
 		
 	}
 	
-	// Methods
 	
+	
+	@Override
+	public String toString() {
+		return "Rota [onibus=" + onibus + ",\n origem=" + origem + ",\n destino=" + destino + ",\n tempoViagem=" + tempoViagem
+				+ ",\n horario=" + horario + ",\n preco=" + preco + "]";
+	}
 	
 }

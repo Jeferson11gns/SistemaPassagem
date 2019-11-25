@@ -17,8 +17,8 @@ public class Administrador extends Funcionario {
 	
 	@Override
 	public String toString() {
-		return "Administrador [dataAdmissao=" + super.getDataAdmissao() + ", salario=" + salario + ", login=" + login + ", senha="
-				+ senha + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNasc=" + super.getDataNasc() + "]";
+		return "Administrador [dataAdmissao=" + super.getDataAdmissao() + ",\n salario=" + salario + ",\n login=" + login + ",\n senha="
+				+ senha + ",\n nome=" + nome + ",\n cpf=" + cpf + ",\n email=" + email + ",\n dataNasc=" + super.getDataNasc() + "]";
 	}
 	
 	// Methods

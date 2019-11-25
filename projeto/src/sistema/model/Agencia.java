@@ -62,7 +62,7 @@ public class Agencia {
 	
 	@Override
 	public String toString() {
-		return "Agencia [cnpj=" + cnpj + ", nome=" + nome + ", local=" + local + ", funcionarios=" + funcionarios + "]";
+		return "Agencia [cnpj=" + cnpj + ",\n nome=" + nome + ",\n local=" + local + ",\n funcionarios=" + funcionarios + "]";
 	}
 	
 	// Methods

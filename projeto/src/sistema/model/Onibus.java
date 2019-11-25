@@ -19,6 +19,7 @@ public class Onibus implements CrudOnibus {
 	private List<Onibus> onibus; 
 	
 	private List<Passagem> passagens;
+	
 	// Constructors
 	
 	public Onibus() {
@@ -61,14 +62,16 @@ public class Onibus implements CrudOnibus {
 	public void setQtdePoltronas(int qtdePoltronas) {
 		this.qtdePoltronas = qtdePoltronas;
 	}
-		
+	
+	// Methods
+	
 	public Poltrona pegarPoltrona(int localizador) {
 		for(int i = 0; i < this.qtdePoltronas; i++) {
 			if(this.poltronas[i].getLocalizacao() == localizador) {
 				return this.poltronas[i];
 			}
 		}
-		return poltronas[0];
+		return null;
 		
 	}
 	
@@ -122,7 +125,7 @@ public class Onibus implements CrudOnibus {
 		
 		Poltrona[] analise = aux.getPoltronas();
 		
-		for(int i = 0; i < this.qtdePoltronas; i++) {	
+		for(int i = 0; i < analise.length; i++) {	
 			
 			if(analise[i].isVazia() && aux.getCodigoBus() == idOnibus) {
 				System.out.println("A poltrona " + analise[i].getLocalizacao() + " esta vazia");
@@ -142,11 +145,7 @@ public class Onibus implements CrudOnibus {
 		}
 	}
 	
-	@Override
-	public String toString() {
-		return "Onibus [codigoBus=" + codigoBus + ", poltronas=" + Arrays.toString(poltronas) + ", qtdePoltronas="
-				+ qtdePoltronas + "]";
-	}
+	
 
 	@Override
 	public void addOnibus(List<Onibus> onibus) {
@@ -207,8 +206,13 @@ public class Onibus implements CrudOnibus {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "Onibus [codigoBus=" + codigoBus + ",\n qtdePoltronas="
+				+ qtdePoltronas + "]";
+	}
 	
 	
-	// Methods
+	
 	
 }

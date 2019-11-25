@@ -7,8 +7,8 @@ import sistema.model.pessoa.Funcionario;
 public interface CrudFuncionario {
 	
 	public void addFuncionario(List <Funcionario> funcionarios);
-	public void removerFuncionario( String cpf);
-	public void buscarFuncionario(String cpf);
-	public void atualizarFuncionario(String cpf);
+	public void removerFuncionario( String cpf, List<Funcionario> func);
+	public void buscarFuncionario(String cpf, List<Funcionario> func);
+	public void atualizarFuncionario(String cpf, List<Funcionario> func);
 	
 }

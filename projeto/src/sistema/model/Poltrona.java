@@ -54,7 +54,9 @@ public class Poltrona {
 		this.passagem = passagem;
 	}
 	
-	public void mudaStatusPassagem(int localizacao) {
+	// Methods
+	
+	public void mudaStatus(int localizacao) {
 		if(this.localizacao == localizacao) {
 			this.vazia = false;
 		}
@@ -63,11 +65,11 @@ public class Poltrona {
 	
 	@Override
 	public String toString() {
-		return "Poltrona [localizacao=" + localizacao + ", passagem=" + passagem + ", vazia=" + vazia + ", passageiro="
+		return "Poltrona [localizacao=" + localizacao + ",\n passagem=" + passagem + ",\n vazia=" + vazia + ",\n passageiro="
 				+ passageiro + "]";
 	}
 	
-	// Methods
+	
 
 	
 }

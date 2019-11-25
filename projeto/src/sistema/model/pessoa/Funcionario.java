@@ -16,14 +16,14 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	protected String login;
 	protected String senha;
 	
-	private List<Funcionario> funcionarios;
+	//private List<Funcionario> funcionarios;
 	
 	// Constructors
 
 	public Funcionario () {
 		super();
 		this.dataAdmissao = Calendar.getInstance();
-		this.funcionarios = new ArrayList<Funcionario>();
+		//this.funcionarios = new ArrayList<Funcionario>();
 	}
 	
 	public Funcionario(String nome, String cpf, String email, Calendar dataNasc, Calendar dataAdmissao, double salario,
@@ -84,32 +84,34 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 
 
 	// Methods
+
+	
 	@Override
 	public void addFuncionario(List<Funcionario> funcionarios) {
 		//funcionarios.add(new Funcionario());
 		
-		this.funcionarios = funcionarios;
+		funcionarios = funcionarios;
 		
 		System.out.println("Digite o Login do Funcionário");
-		this.funcionarios.get(funcionarios.size()-1).setLogin(in.nextLine());
+		funcionarios.get(funcionarios.size()-1).setLogin(in.nextLine());
 		
 		System.out.println("Digite a senha do Funcionário");
-		this.funcionarios.get(funcionarios.size()-1).setSenha(in.nextLine());
+		funcionarios.get(funcionarios.size()-1).setSenha(in.nextLine());
 		
 		System.out.println("Digite o nome do Funcionário");
-		this.funcionarios.get(funcionarios.size()-1).setNome(in.nextLine());
+		funcionarios.get(funcionarios.size()-1).setNome(in.nextLine());
 		
 		System.out.println("Digite o cpf do Funcionário");
-		this.funcionarios.get(funcionarios.size()-1).setCpf(in.nextLine());
+		funcionarios.get(funcionarios.size()-1).setCpf(in.nextLine());
 		
 		System.out.println("Digite o email Funcionário");
-		this.funcionarios.get(funcionarios.size()-1).setEmail(in.nextLine());
+		funcionarios.get(funcionarios.size()-1).setEmail(in.nextLine());
 		
 		System.out.println("Digite a data de nascimento do Funcionário: ");
 		String auxiliar[] = in.nextLine().split("/");
 		
 		try {
-        this.funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
+        funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
         														Integer.parseInt(auxiliar[1]),
         														Integer.parseInt(auxiliar[2]));
 		}catch(NumberFormatException e) {
@@ -118,20 +120,20 @@ public class Funcionario extends Usuario implements CrudFuncionario {
         
         System.out.println("Digite o salario do funcionario");
         try {
-        this.funcionarios.get(funcionarios.size()-1).setSalario(Double.parseDouble(in.nextLine()));
+        	funcionarios.get(funcionarios.size()-1).setSalario(Double.parseDouble(in.nextLine()));
         }catch(NumberFormatException e) {
         	System.out.println("Salário inválido, o salário setado como R$0.0, atualize mais tarde");
         }
 	}
 	
 	@Override
-	public void removerFuncionario(String cpf) {
+	public void removerFuncionario(String cpf, List<Funcionario> func) {
 		
 		int controle = 1;
 		
-		for(Funcionario x: this.funcionarios) {
+		for(Funcionario x: func) {
 			if(x.getCpf().equals(cpf)) {
-				this.funcionarios.remove(x);
+				func.remove(x);
 				System.out.println("o Funcionario" + this.nome + "com o CPF" +this.cpf + "foi removido com sucesso");
 				return;
 			}else {
@@ -147,11 +149,11 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	}
 	
 	@Override
-	public void buscarFuncionario( String cpf) {
+	public void buscarFuncionario(String cpf, List<Funcionario> func) {
 		
 		int controle = 1;
 		
-		for(Funcionario x: this.funcionarios) {
+		for(Funcionario x: func) {
 			if(x.getCpf().equals(cpf)) {
 				System.out.println(x);
 				return;
@@ -168,11 +170,11 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	}
 	
 	@Override
-	public void atualizarFuncionario(String cpf) {
+	public void atualizarFuncionario(String cpf, List<Funcionario> func) {
 		
 		int controle = 1;
 		
-		for(Funcionario x: this.funcionarios) {
+		for(Funcionario x: func) {
 			if(x.getCpf().equals(cpf)) {
 				
 				System.out.println("Digite a data de nasc: ");

@@ -41,6 +41,11 @@ public class Principal {
 		adm.setCpf("000.000.000-00");
 		adm.setLogin("admin");
 		adm.setSenha("admin");
+		Funcionario func = new Funcionario();
+		func.setNome("Joaozinho");
+		func.setCpf("000.001.000-11");
+		//func.addFuncionario(func);
+		listaFuncionarios.add(func);
 	
 		
 		
@@ -126,7 +131,7 @@ public class Principal {
 						System.out.println("Digite o cpf do Funcionário que deseja remover:");
 						String cpf = in.nextLine();
 						
-						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf);
+						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf, listaFuncionarios);
 						
 						
 					} else if(opcaoAdm == 3) {
@@ -141,7 +146,7 @@ public class Principal {
 						System.out.println("Digite o cpf do Funcionário que deseja atualizar: ");
 						String cpf = in.nextLine();
 						
-						listaFuncionarios.get(listaFuncionarios.size()-1).atualizarFuncionario(cpf);
+						listaFuncionarios.get(listaFuncionarios.size()-1).atualizarFuncionario(cpf, listaFuncionarios);
 						
 					} else if(opcaoAdm == 5) {
 						
@@ -274,9 +279,13 @@ public class Principal {
 						}
 					
 						
+<<<<<<< HEAD
 						//boolean taVazia = listaOnibus.get(listaOnibus.size()-1).poltronasVazias(idOnibus);
 						boolean taVazia = auxRota.getOnibus().poltronasVazias(idOnibus);
 						
+=======
+						boolean taVazia = contr.getOnibus().poltronasVazias(idOnibus);
+>>>>>>> master
 						
 						if(taVazia) {
 							
@@ -287,19 +296,35 @@ public class Principal {
 							System.out.println("Digite o número da Poltrona: ");
 							int cadeira = Integer.parseInt(in.nextLine());
 							
+<<<<<<< HEAD
 							Poltrona teste = auxRota.getOnibus().pegarPoltrona(cadeira);
 							teste.mudaStatusPassagem(cadeira);
 
+=======
+							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
+							if(teste == null) {
+								System.out.println("Cadeira invalida");
+								continue;
+							}
+							teste.mudaStatus(cadeira);
+							
+>>>>>>> master
 							
 							listaPassageiros.add(new Passageiro());
 							listaPassagens.add(new Passagem());
 							
 							listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
+							
 							//adcionar passageiro a passagem
 							listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
 							listaPassagens.get(listaPassagens.size()-1).setValida(true);	
+<<<<<<< HEAD
 							System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
 							
+=======
+						
+							System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
+>>>>>>> master
 						}	
 					
 					} else if(menuFunc == 2) {

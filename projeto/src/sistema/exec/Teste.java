@@ -19,14 +19,6 @@ import java.util.Scanner;
 public class Teste {
 
 	public static void main(String[] args) {
-		
-		
-		
-		
-		
-		
-		
-		
 		Scanner ler = new Scanner(System.in);
 		List<Cidade> listaCidades = new ArrayList<Cidade>();
 		List<Onibus> listaOnibus = new ArrayList<Onibus>();
@@ -36,11 +28,46 @@ public class Teste {
 		List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
 		List<Passageiro> listaPassageiros = new ArrayList<Passageiro>();
 		
-		addCidade(listaCidades);
-		addCidade(listaCidades);
+		// Poltronas default
+		Poltrona[] pol20 = new Poltrona[20];
+		Poltrona[] pol30 = new Poltrona[30];
+		
+		// Onibus default
+		listaOnibus.add(new Onibus(0001, pol20, 20));
+		listaOnibus.add(new Onibus(0002, pol30, 30));
+		
+		// Cidades default
+		listaCidades.add(new Cidade("Fortaleza", "Ceará"));
+		listaCidades.add(new Cidade("Quixadá", "Ceará"));
+		
+		// Rota default
+		
+		listaRotas.add(new Rota(listaOnibus.get(1), listaCidades.get(0),
+								listaCidades.get(1), "3h30", "14h", 27.39));
+		
+		System.out.println("Passageiro já cadastrado?");
+		System.out.println("1 - Sim \n2 - Não");
+		int control = Integer.parseInt(ler.nextLine());
+		
+		if(control == 1) {
+			listaPassageiros.add(new Passageiro());	
+			listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
+		}
+		
+		
+		
+		listaPassagens.add(new Passagem());
+		
+		//listaCidades.get(listaCidades.size()-1).addCidade(listaCidades);
+		
+		// VENDER PASSAGEM
+		
+		
+		//addCidade(listaCidades);
+		//addCidade(listaCidades);
 		//addCidade(listaCidades);
 		
-		buscarCidade(listaCidades, "parambu");
+		//buscarCidade(listaCidades, "Fortaleza");
 		
 		//for(Cidade i: listaCidades) System.out.println(i);
 		//System.out.println(listaCidades);
@@ -58,8 +85,8 @@ public class Teste {
 	public static void addCidade(List<Cidade> c) {
 		Scanner ler = new Scanner(System.in);
 		c.add(new Cidade());
-		System.out.println("Digite o código");
-		c.get(c.size()-1).setCodigo(Integer.parseInt(ler.nextLine()));
+		//System.out.println("Digite o código");
+		//c.get(c.size()-1).setCodigo(Integer.parseInt(ler.nextLine()));
 		System.out.println("Digite o nome");
 		c.get(c.size()-1).setNome(ler.nextLine());
 		System.out.println("Digite o Estado");

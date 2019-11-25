@@ -1,5 +1,6 @@
 package sistema.model.pessoa;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
@@ -87,6 +88,9 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	
 	@Override
 	public void addFuncionario(List<Funcionario> funcionarios) {
+		//funcionarios.add(new Funcionario());
+		
+		funcionarios = funcionarios;
 		
 		System.out.println("Digite o Login do Funcionário");
 		funcionarios.get(funcionarios.size()-1).setLogin(in.nextLine());
@@ -110,7 +114,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
         funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
         														Integer.parseInt(auxiliar[1]),
         														Integer.parseInt(auxiliar[2]));
-		}catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
+		}catch(NumberFormatException e) {
 			System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
 		}
         
@@ -130,7 +134,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 		for(Funcionario x: func) {
 			if(x.getCpf().equals(cpf)) {
 				func.remove(x);
-				System.out.println("o Funcionario " + this.nome + " com o CPF " +this.cpf + " foi removido com sucesso");
+				System.out.println("o Funcionario" + this.nome + "com o CPF" +this.cpf + "foi removido com sucesso");
 				return;
 			}else {
 				controle = 0;
@@ -179,7 +183,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 			        x.setDataNasc(Integer.parseInt(auxiliar[0]), 
 			        				Integer.parseInt(auxiliar[1]),
 			        				Integer.parseInt(auxiliar[2]));
-					}catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
+					}catch(NumberFormatException e) {
 						System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
 					}
 				
@@ -193,15 +197,14 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 				x.setSenha(in.nextLine());
 				
 				return;
-				
 			} else {
 				controle = 0;
 			}
 			
-		}
-		
-		if(controle == 0) {
-			System.out.println("Funcionario nao encontrado");
+			if(controle == 0) {
+				System.out.println("Funcionario nao encontrado");
+			}
+			
 		}
 		
 	}

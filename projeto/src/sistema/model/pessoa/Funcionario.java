@@ -130,7 +130,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 		for(Funcionario x: func) {
 			if(x.getCpf().equals(cpf)) {
 				func.remove(x);
-				System.out.println("o Funcionario" + this.nome + "com o CPF" +this.cpf + "foi removido com sucesso");
+				System.out.println("o Funcionario " + this.nome + " com o CPF " +this.cpf + " foi removido com sucesso");
 				return;
 			}else {
 				controle = 0;

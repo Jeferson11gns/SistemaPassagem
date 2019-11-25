@@ -41,6 +41,11 @@ public class Principal {
 		adm.setCpf("000.000.000-00");
 		adm.setLogin("admin");
 		adm.setSenha("admin");
+		Funcionario func = new Funcionario();
+		func.setNome("Joaozinho");
+		func.setCpf("000.001.000-11");
+		//func.addFuncionario(func);
+		listaFuncionarios.add(func);
 	
 		
 		
@@ -126,7 +131,7 @@ public class Principal {
 						System.out.println("Digite o cpf do Funcionário que deseja remover:");
 						String cpf = in.nextLine();
 						
-						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf);
+						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf, listaFuncionarios);
 						
 						
 					} else if(opcaoAdm == 3) {
@@ -141,7 +146,7 @@ public class Principal {
 						System.out.println("Digite o cpf do Funcionário que deseja atualizar: ");
 						String cpf = in.nextLine();
 						
-						listaFuncionarios.get(listaFuncionarios.size()-1).atualizarFuncionario(cpf);
+						listaFuncionarios.get(listaFuncionarios.size()-1).atualizarFuncionario(cpf, listaFuncionarios);
 						
 					} else if(opcaoAdm == 5) {
 						

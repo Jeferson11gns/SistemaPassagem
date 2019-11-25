@@ -100,8 +100,12 @@ public class Rota implements CrudRota {
 		this.rotas.get(rotas.size()-1).setHorario(in.nextLine());
 		
 		System.out.println("Digite o preco");
-		this.rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
-		
+		try {
+			this.rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
+		}catch(NumberFormatException e) {
+			System.out.println("Valor inválido, o valor default R$30.99 foi adicionado");
+			this.rotas.get(rotas.size()-1).setPreco(30.99);
+		}
 		System.out.println("Digite o tempo de viagem");
 		this.rotas.get(rotas.size()-1).setTempoViagem(in.nextLine());
 		

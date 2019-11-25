@@ -1,7 +1,5 @@
 package sistema.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,16 +14,11 @@ public class Onibus implements CrudOnibus {
 	private Poltrona[] poltronas;
 	private int qtdePoltronas;
 	
-	private List<Onibus> onibus; 
-	
-	private List<Passagem> passagens;
+
 	
 	// Constructors
 	
 	public Onibus() {
-		this.onibus = new ArrayList<Onibus>();
-		this.passagens = new ArrayList<Passagem>();
-		//this.poltronas = new Poltrona[this.qtdePoltronas];
 	}
 	
 	public Onibus(int codigoBus, Poltrona[] poltronas, int qtdePoltronas) {
@@ -110,12 +103,12 @@ public class Onibus implements CrudOnibus {
 		}
 	}
 	
-	public boolean poltronasVazias(int idOnibus) {
+	public boolean poltronasVazias(int idOnibus, List<Onibus> onibus) {
 		
 		int controle = 0;
 		
 		Onibus aux = new Onibus();
-		for(Onibus x: this.onibus) {
+		for(Onibus x: onibus) {
 			if(x.getCodigoBus() == idOnibus) {
 				aux = x;
 				break;
@@ -127,7 +120,7 @@ public class Onibus implements CrudOnibus {
 		
 		for(int i = 0; i < analise.length; i++) {	
 			
-			if(analise[i].isVazia()) {
+			if(analise[i].isVazia() && aux.getCodigoBus() == idOnibus) {
 				System.out.println("A poltrona " + analise[i].getLocalizacao() + " esta vazia");
 				controle = 1;		
 				
@@ -149,23 +142,23 @@ public class Onibus implements CrudOnibus {
 
 	@Override
 	public void addOnibus(List<Onibus> onibus) {
-		this.onibus = onibus;
+		
 		
 		System.out.println("Digite o codigo fo onibus");
-		this.onibus.get(onibus.size()-1).setCodigoBus(Integer.parseInt(in.nextLine()));
+		onibus.get(onibus.size()-1).setCodigoBus(Integer.parseInt(in.nextLine()));
 		
 		System.out.println("Digite a quantidade de poltronas");
-		this.onibus.get(onibus.size()-1).setQtdePoltronas(Integer.parseInt(in.nextLine()));
+		onibus.get(onibus.size()-1).setQtdePoltronas(Integer.parseInt(in.nextLine()));
 	
 	}
 
 	@Override
-	public void removerOnibus(int codigoBus) {
+	public void removerOnibus(int codigoBus, List<Onibus> onibus) {
 		int controle = 1;
 		
-		for(Onibus x: this.onibus) {
+		for(Onibus x: onibus) {
 			if(x.getCodigoBus() == codigoBus) {
-				this.onibus.remove(x);
+				onibus.remove(x);
 				System.out.println("O onibus com o codigo: "+ x.getCodigoBus() + " foi removido");
 				return;
 			}else {
@@ -180,10 +173,10 @@ public class Onibus implements CrudOnibus {
 	}
 
 	@Override
-	public void buscarOnibus(int codigoBus) {
+	public void buscarOnibus(int codigoBus, List<Onibus> onibus) {
 		int controle = 1;
 		
-		for(Onibus x: this.onibus) {
+		for(Onibus x: onibus) {
 			if(x.getCodigoBus() == codigoBus) {
 				System.out.println(x);
 				return;
@@ -201,7 +194,7 @@ public class Onibus implements CrudOnibus {
 	
 
 	@Override
-	public void atualizarOnibus() {
+	public void atualizarOnibus(List<Onibus> onibus) {
 		// TODO Auto-generated method stub
 		
 	}

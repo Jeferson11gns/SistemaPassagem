@@ -1,6 +1,5 @@
 package sistema.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import sistema.model.pessoa.Passageiro;
@@ -66,6 +65,9 @@ public class Passagem {
 		this.valida = valida;
 	}	
 	
+
+	//@Override
+	//public void addPassagem(List<Passagem> passagens) {
 	
 	// Methods	
 	

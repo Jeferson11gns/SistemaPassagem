@@ -206,7 +206,7 @@ public class Principal {
 						System.out.println("Digite a Cidade de Destino da Rota a ser removida: ");
 						String cidadeDestino = in.nextLine();
 						
-						listaRotas.get(listaRotas.size()-1).removerRota(cidadeOrigem, cidadeDestino);
+						listaRotas.get(listaRotas.size()-1).removerRota(cidadeOrigem, cidadeDestino, listaRotas);
 						
 					} else if(opcaoAdm == 7) {
 						
@@ -257,7 +257,7 @@ public class Principal {
 						System.out.print("Cidade de Destino: ");
 						String cidadeDestino = in.nextLine();
 						
-						boolean foiCerto = listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino);
+						boolean foiCerto = listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino, listaRotas);
 						
 						String horario;
 						if(foiCerto) {
@@ -281,7 +281,8 @@ public class Principal {
 						}
 					
 						
-						boolean taVazia = contr.getOnibus().poltronasVazias(idOnibus);
+
+						boolean taVazia = contr.getOnibus().poltronasVazias(idOnibus, listaOnibus);
 						
 						if(taVazia) {
 							
@@ -292,6 +293,7 @@ public class Principal {
 							System.out.println("Digite o número da Poltrona: ");
 							int cadeira = Integer.parseInt(in.nextLine());
 							
+
 							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
 							if(teste == null) {
 								System.out.println("Cadeira invalida");
@@ -299,6 +301,7 @@ public class Principal {
 							}
 							teste.mudaStatus(cadeira);
 							
+
 							
 							listaPassageiros.add(new Passageiro());
 							listaPassagens.add(new Passagem());
@@ -308,6 +311,7 @@ public class Principal {
 							//adcionar passageiro a passagem
 							listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
 							listaPassagens.get(listaPassagens.size()-1).setValida(true);	
+
 						
 							System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
 						}	

@@ -257,6 +257,13 @@ public class Principal {
 						System.out.print("Cidade de Destino: ");
 						String cidadeDestino = in.nextLine();
 						
+						if(listaRotas.isEmpty()) {
+							System.out.println("Rota nao existe");
+							System.out.println("Pressione qualquer tecla para continuar...");
+							String qualquer = in.nextLine();
+							continue;
+						}
+						
 						boolean foiCerto = listaRotas.get(listaRotas.size()-1).buscarRota(cidadeOrigem, cidadeDestino, listaRotas);
 						
 						String horario;

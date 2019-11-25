@@ -264,17 +264,19 @@ public class Principal {
 						
 						//arrumar para nao deixar nenhum codigo de onibus ser o
 						int idOnibus = 0;
-						Rota contr = new Rota();
+						Rota auxRota = new Rota();
 						
 						for(Rota x: listaRotas) {
 							if(x.getHorario().equals(horario)) {
 								idOnibus = x.getOnibus().getCodigoBus();
-								contr = x;
+								auxRota = x;
 							}
 						}
 					
 						
-						boolean taVazia = listaOnibus.get(listaOnibus.size()-1).poltronasVazias(idOnibus);
+						//boolean taVazia = listaOnibus.get(listaOnibus.size()-1).poltronasVazias(idOnibus);
+						boolean taVazia = auxRota.getOnibus().poltronasVazias(idOnibus);
+						
 						
 						if(taVazia) {
 							
@@ -285,7 +287,7 @@ public class Principal {
 							System.out.println("Digite o número da Poltrona: ");
 							int cadeira = Integer.parseInt(in.nextLine());
 							
-							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
+							Poltrona teste = auxRota.getOnibus().pegarPoltrona(cadeira);
 							teste.mudaStatusPassagem(cadeira);
 
 							
@@ -295,8 +297,8 @@ public class Principal {
 							listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
 							//adcionar passageiro a passagem
 							listaPassagens.get(listaPassagens.size()-1).setPassageiro(listaPassageiros.get(listaPassageiros.size()-1));
-								
-						
+							listaPassagens.get(listaPassagens.size()-1).setValida(true);	
+							System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
 							
 						}	
 					

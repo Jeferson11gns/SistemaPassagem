@@ -124,7 +124,7 @@ public class Onibus implements CrudOnibus {
 		
 		for(int i = 0; i < this.qtdePoltronas; i++) {	
 			
-			if(analise[i].isVazia()) {
+			if(analise[i].isVazia() && aux.getCodigoBus() == idOnibus) {
 				System.out.println("A poltrona " + analise[i].getLocalizacao() + " esta vazia");
 				controle = 1;		
 				

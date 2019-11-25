@@ -68,7 +68,7 @@ public class Passagem implements CrudPassagem {
 	@Override
 	public String toString() {
 		return "Passagem [localizador=" + localizador +  ", valida="
-				+ valida + "]";
+				+ valida +""+passageiro+ "]";
 	}
 
 	@Override

@@ -142,11 +142,7 @@ public class Onibus implements CrudOnibus {
 		}
 	}
 	
-	@Override
-	public String toString() {
-		return "Onibus [codigoBus=" + codigoBus + ", poltronas=" + Arrays.toString(poltronas) + ", qtdePoltronas="
-				+ qtdePoltronas + "]";
-	}
+	// Methods
 
 	@Override
 	public void addOnibus(List<Onibus> onibus) {
@@ -207,8 +203,13 @@ public class Onibus implements CrudOnibus {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "Onibus [codigoBus=" + codigoBus + ",\n qtdePoltronas="
+				+ qtdePoltronas + "]";
+	}
 	
 	
-	// Methods
+	
 	
 }

@@ -2,16 +2,19 @@ package sistema.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import sistema.crud.CrudPassagem;
 import sistema.model.pessoa.Passageiro;
 
 public class Passagem implements CrudPassagem {
 	
+	Scanner in = new Scanner(System.in);
+	
 	private int localizador;
 	private Rota rota;
 	private Passageiro passageiro;
-	private boolean valida;
+	private boolean valida = false;
 	
 
 	// Constructors
@@ -65,14 +68,16 @@ public class Passagem implements CrudPassagem {
 		this.valida = valida;
 	}	
 	
-	@Override
-	public String toString() {
-		return "Passagem [localizador=" + localizador +  ", valida="
-				+ valida + "]";
-	}
+	
+	// Methods
+	
 
 	@Override
-	public void addPassagem(List<Passagem> passagens) {
+	public void addPassagem() {
+		System.out.println("Digite o localizador");
+		System.out.println("Adicione uma rota");
+		System.out.println("Cpf do passageiro");
+		this.valida = true;
 	
 	}
 
@@ -83,7 +88,7 @@ public class Passagem implements CrudPassagem {
 	}
 
 	@Override
-	public void buscarPassagem(int localizador) {
+	public  void buscarPassagem(int localizador) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -94,7 +99,11 @@ public class Passagem implements CrudPassagem {
 		
 	}
 	
-	// Methods
-
 	
+
+	@Override
+	public String toString() {
+		return "Passagem [localizador=" + localizador +  ",\n valida="
+				+ valida + "]";
+	}
 }

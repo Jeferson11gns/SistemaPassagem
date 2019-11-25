@@ -88,11 +88,7 @@ public class Rota implements CrudRota {
 		this.preco = preco;
 	}
 	
-	@Override
-	public String toString() {
-		return "Rota [onibus=" + onibus + ", origem=" + origem + ", destino=" + destino + ", tempoViagem=" + tempoViagem
-				+ ", horario=" + horario + ", preco=" + preco + "]";
-	}
+	// Methods
 
 	@Override
 	public void addRota(List<Rota> rotas) {
@@ -148,7 +144,7 @@ public class Rota implements CrudRota {
 		}
 			
 		if(controle == 0) {
-			System.out.println("A rota nao pode ser removido");
+			System.out.println("A rota não identificada");
 		}
 		
 		
@@ -160,7 +156,12 @@ public class Rota implements CrudRota {
 		
 	}
 	
-	// Methods
 	
+	
+	@Override
+	public String toString() {
+		return "Rota [onibus=" + onibus + ",\n origem=" + origem + ",\n destino=" + destino + ",\n tempoViagem=" + tempoViagem
+				+ ",\n horario=" + horario + ",\n preco=" + preco + "]";
+	}
 	
 }

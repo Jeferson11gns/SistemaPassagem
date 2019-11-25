@@ -63,7 +63,7 @@ public class Poltrona {
 	
 	@Override
 	public String toString() {
-		return "Poltrona [localizacao=" + localizacao + ", passagem=" + passagem + ", vazia=" + vazia + ", passageiro="
+		return "Poltrona [localizacao=" + localizacao + ",\n passagem=" + passagem + ",\n vazia=" + vazia + ",\n passageiro="
 				+ passageiro + "]";
 	}
 	

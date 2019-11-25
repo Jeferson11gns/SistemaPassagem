@@ -111,7 +111,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
         funcionarios.get(funcionarios.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
         														Integer.parseInt(auxiliar[1]),
         														Integer.parseInt(auxiliar[2]));
-		}catch(NumberFormatException e) {
+		}catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
 			System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
 		}
         
@@ -180,7 +180,7 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 			        x.setDataNasc(Integer.parseInt(auxiliar[0]), 
 			        				Integer.parseInt(auxiliar[1]),
 			        				Integer.parseInt(auxiliar[2]));
-					}catch(NumberFormatException e) {
+					}catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
 						System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
 					}
 				

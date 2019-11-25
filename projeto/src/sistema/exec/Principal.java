@@ -280,12 +280,21 @@ public class Principal {
 						int idOnibus = 0;
 						Rota contr = new Rota();
 						
+						int controleHora = 1;
 						for(Rota x: listaRotas) {
 							if(x.getHorario().equals(horario)) {
 								idOnibus = x.getOnibus().getCodigoBus();
 								contr = x;
+								controleHora = 0;
 							}
 						}
+							
+							if(controleHora == 1) {
+								System.out.println("Horario Invalido");
+								System.out.println("Pressione qualquer tecla para continuar...");
+								String qualquer = in.nextLine();
+								continue;
+							}
 					
 						
 
@@ -320,7 +329,7 @@ public class Principal {
 							listaPassagens.get(listaPassagens.size()-1).setValida(true);	
 
 						
-							System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
+							//System.out.println("-->" + listaPassagens.get(listaPassagens.size()-1));
 						}	
 					
 					} else if(menuFunc == 2) {

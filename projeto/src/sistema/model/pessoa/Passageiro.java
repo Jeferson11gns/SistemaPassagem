@@ -50,14 +50,18 @@ public class Passageiro extends Usuario implements CrudPassageiro {
 		
 		System.out.println("Digite o cpf do Passageiro: ");
 		passageiros.get(passageiros.size()-1).setCpf(in.nextLine());
-		/**
+		
 		System.out.println("Digite a data de nascimento: ");
 		String auxiliar[] = in.nextLine().split("/");
 		
-        this.passageiros.get(passageiros.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
-        														Integer.parseInt(auxiliar[1]),
-        														Integer.parseInt(auxiliar[2]));
-		**/
+		try {
+	        passageiros.get(passageiros.size()-1).setDataNasc(Integer.parseInt(auxiliar[0]), 
+	        														Integer.parseInt(auxiliar[1]),
+	        														Integer.parseInt(auxiliar[2]));
+		}catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
+			System.out.println("Data inválida, a data foi setada como a data atual, atualize mais tarde");
+		}
+		
 	}
 
 	@Override

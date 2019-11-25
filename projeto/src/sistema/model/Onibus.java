@@ -66,11 +66,11 @@ public class Onibus implements CrudOnibus {
 	// Methods
 	
 	public Poltrona pegarPoltrona(int localizador) {
-		for(int i = 0; i < this.qtdePoltronas; i++) {
-			if(this.poltronas[i].getLocalizacao() == localizador) {
-				return this.poltronas[i];
+			for(int i = 0; i < this.qtdePoltronas; i++) {
+				if(this.poltronas[i].getLocalizacao() == localizador) {
+					return this.poltronas[i];
+				}
 			}
-		}
 		return null;
 		
 	}

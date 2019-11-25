@@ -132,6 +132,8 @@ public class Principal {
 						String cpf = in.nextLine();
 						
 						listaFuncionarios.get(listaFuncionarios.size()-1).removerFuncionario(cpf, listaFuncionarios);
+						System.out.println("Pressione qualquer tecla para continuar");
+						opmenu = in.nextLine();
 						
 						
 					} else if(opcaoAdm == 3) {

@@ -47,7 +47,7 @@ public class Cidade implements CrudCidade {
 		this.estado = estado;
 	}
 	
-	
+	// Methods
 
 	@Override
 	public void addCidade(List<Cidade> cidades) {

@@ -286,7 +286,7 @@ public class Principal {
 							int cadeira = Integer.parseInt(in.nextLine());
 							
 							Poltrona teste = contr.getOnibus().pegarPoltrona(cadeira);
-							teste.mudaStatusPassagem(cadeira);
+							teste.mudaStatus(cadeira);
 
 							
 							listaPassageiros.add(new Passageiro());

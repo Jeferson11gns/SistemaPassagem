@@ -19,6 +19,7 @@ public class Onibus implements CrudOnibus {
 	private List<Onibus> onibus; 
 	
 	private List<Passagem> passagens;
+	
 	// Constructors
 	
 	public Onibus() {
@@ -61,7 +62,9 @@ public class Onibus implements CrudOnibus {
 	public void setQtdePoltronas(int qtdePoltronas) {
 		this.qtdePoltronas = qtdePoltronas;
 	}
-		
+	
+	// Methods
+	
 	public Poltrona pegarPoltrona(int localizador) {
 		for(int i = 0; i < this.qtdePoltronas; i++) {
 			if(this.poltronas[i].getLocalizacao() == localizador) {
@@ -142,7 +145,7 @@ public class Onibus implements CrudOnibus {
 		}
 	}
 	
-	// Methods
+	
 
 	@Override
 	public void addOnibus(List<Onibus> onibus) {

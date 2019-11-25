@@ -13,12 +13,12 @@ public class Rota implements CrudRota {
 	
 	Scanner in = new Scanner(System.in);
 	
-	protected Onibus onibus;
-	protected Cidade origem;
-	protected Cidade destino;
-	protected String tempoViagem;
-	protected String horario;
-	protected double preco;
+	private Onibus onibus;
+	private Cidade origem;
+	private Cidade destino;
+	private String tempoViagem;
+	private String horario;
+	private double preco;
 	
 	private List<Rota> rotas;
 	

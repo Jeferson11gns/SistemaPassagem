@@ -3,11 +3,9 @@ package sistema.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import sistema.crud.CrudPassagem;
 import sistema.model.pessoa.Passageiro;
 
-public class Passagem implements CrudPassagem {
+public class Passagem {
 	
 	Scanner in = new Scanner(System.in);
 	
@@ -69,36 +67,7 @@ public class Passagem implements CrudPassagem {
 	}	
 	
 	
-	// Methods
-	
-
-	@Override
-	public void addPassagem() {
-		System.out.println("Digite o localizador");
-		System.out.println("Adicione uma rota");
-		System.out.println("Cpf do passageiro");
-		this.valida = true;
-	
-	}
-
-	@Override
-	public void removerPassagem(int localizador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public  void buscarPassagem(int localizador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void atualizarPassagem(int localizador) {
-		
-		
-	}
-	
+	// Methods	
 	
 
 	@Override

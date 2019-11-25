@@ -54,7 +54,9 @@ public class Poltrona {
 		this.passagem = passagem;
 	}
 	
-	public void mudaStatusPassagem(int localizacao) {
+	// Methods
+	
+	public void mudaStatus(int localizacao) {
 		if(this.localizacao == localizacao) {
 			this.vazia = false;
 		}
@@ -67,7 +69,7 @@ public class Poltrona {
 				+ passageiro + "]";
 	}
 	
-	// Methods
+	
 
 	
 }

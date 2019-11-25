@@ -1,11 +1,9 @@
 package sistema.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import sistema.crud.CrudCidade;
-import sistema.model.pessoa.Funcionario;
 
 public class Cidade implements CrudCidade {
 	
@@ -15,11 +13,10 @@ public class Cidade implements CrudCidade {
 	private String nome;
 	private String estado;
 	
-	private List<Cidade> cidades;
+	
 	// Constructor
 	
 	public Cidade() {
-		cidades = new ArrayList<Cidade>();
 	}
 	
 	public Cidade(String nome, String estado) {
@@ -52,24 +49,22 @@ public class Cidade implements CrudCidade {
 	@Override
 	public void addCidade(List<Cidade> cidades) {
 		
-		this.cidades = cidades;
-		
 		System.out.println("Digite o nome da cidade: ");
-		this.cidades.get(cidades.size()-1).setNome(in.nextLine());
+		cidades.get(cidades.size()-1).setNome(in.nextLine());
 		
 		System.out.println("Fica em qual estado: ");
-		this.cidades.get(cidades.size()-1).setEstado(in.nextLine());
+		cidades.get(cidades.size()-1).setEstado(in.nextLine());
 		
 	}
 
 	@Override
-	public void removerCidade(String nome) {
+	public void removerCidade(String nome, List <Cidade> cidades) {
 		
 		int controle = 1;
 		
-		for(Cidade x: this.cidades) {
+		for(Cidade x: cidades) {
 			if(x.getNome().equals(nome)) {
-				this.cidades.remove(x);
+				cidades.remove(x);
 				System.out.println("A cidade: " + this.nome + " foi removido com sucesso");
 				return;
 			}else {
@@ -85,11 +80,11 @@ public class Cidade implements CrudCidade {
 	}
 
 	@Override
-	public void buscarCidade(String nome) {
+	public void buscarCidade(String nome, List <Cidade> cidades) {
 		
 		int controle = 1;
 		
-		for(Cidade x: this.cidades) {
+		for(Cidade x: cidades) {
 			if(x.getNome().equals(nome)) {
 				System.out.println(x);
 				return;
@@ -104,7 +99,7 @@ public class Cidade implements CrudCidade {
 	}
 
 	@Override
-	public void atualizarCidade() {
+	public void atualizarCidade(List <Cidade> cidades) {
 		// TODO Auto-generated method stub
 		
 	}

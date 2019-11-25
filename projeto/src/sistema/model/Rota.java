@@ -1,11 +1,11 @@
 package sistema.model;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
 import sistema.crud.CrudRota;
-import sistema.model.pessoa.Funcionario;
+
 
 
 
@@ -20,12 +20,11 @@ public class Rota implements CrudRota {
 	private String horario;
 	private double preco;
 	
-	private List<Rota> rotas;
+	
 	
 	// Constructors
 	
 	public Rota() {
-		this.rotas = new ArrayList<Rota>();
 	}
 	
 	public Rota(Onibus onibus, Cidade origem, Cidade destino, String tempoViagem, String horario, double preco) {
@@ -93,33 +92,31 @@ public class Rota implements CrudRota {
 	@Override
 	public void addRota(List<Rota> rotas) {
 		
-		this.rotas = rotas;
-		
 		//add coisas proprias da rota
 		System.out.println("Digite o horario");
-		this.rotas.get(rotas.size()-1).setHorario(in.nextLine());
+		rotas.get(rotas.size()-1).setHorario(in.nextLine());
 		
 		System.out.println("Digite o preco");
 		try {
-			this.rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
+			rotas.get(rotas.size()-1).setPreco(Double.parseDouble(in.nextLine()));
 		}catch(NumberFormatException e) {
 			System.out.println("Valor inválido, o valor default R$30.99 foi adicionado");
-			this.rotas.get(rotas.size()-1).setPreco(30.99);
+			rotas.get(rotas.size()-1).setPreco(30.99);
 		}
 		System.out.println("Digite o tempo de viagem");
-		this.rotas.get(rotas.size()-1).setTempoViagem(in.nextLine());
+		rotas.get(rotas.size()-1).setTempoViagem(in.nextLine());
 		
 		//System.out.println("");
 	}
 
 	@Override
-	public void removerRota(String cidadeOrigem, String cidadeDestino) {
+	public void removerRota(String cidadeOrigem, String cidadeDestino, List <Rota> rotas) {
 		
 		int controle = 1;
 		
-		for(Rota x: this.rotas) {
+		for(Rota x: rotas) {
 			if(x.getOrigem().getNome().equals(cidadeOrigem) && x.getDestino().getNome().equals(cidadeDestino)) {
-				this.rotas.remove(x);
+				rotas.remove(x);
 				System.out.println("A rota foi removido com sucesso");
 				return;
 			}else {
@@ -134,11 +131,11 @@ public class Rota implements CrudRota {
 	}
 
 	@Override
-	public boolean buscarRota(String cidadeOrigem, String cidadeDestino) {
+	public boolean buscarRota(String cidadeOrigem, String cidadeDestino, List <Rota> rotas) {
 		
 		int controle = 0;
 		
-		for(Rota x: this.rotas) {
+		for(Rota x: rotas) {
 			if(x.getOrigem().getNome().equals(cidadeOrigem) && x.getDestino().getNome().equals(cidadeDestino)) {
 				System.out.println(x);
 				controle = 1;
@@ -161,7 +158,7 @@ public class Rota implements CrudRota {
 	}
 
 	@Override
-	public void atualizarRota() {
+	public void atualizarRota(List <Rota> rotas) {
 		// TODO Auto-generated method stub
 		
 	}

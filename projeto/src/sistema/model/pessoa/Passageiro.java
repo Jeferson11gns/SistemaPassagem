@@ -13,13 +13,11 @@ public class Passageiro extends Usuario implements CrudPassageiro {
 	
 	
 	private List<Passagem> passagens;
-	private List<Passageiro> passageiros;
 	
 	// Constructors
 	
 	public Passageiro() {
 		this.passagens = new ArrayList<Passagem>();
-		this.passageiros = new ArrayList<Passageiro>();
 	}
 	
 	public Passageiro(List<Passagem> passagens) {
@@ -46,13 +44,12 @@ public class Passageiro extends Usuario implements CrudPassageiro {
 	@Override
 	public void addPassageiro(List<Passageiro> passageiros) {
 		
-		this.passageiros = passageiros;
-		
+				
 		System.out.println("Digite o nome do Passageiro: ");
-		this.passageiros.get(passageiros.size()-1).setNome(in.nextLine());
+		passageiros.get(passageiros.size()-1).setNome(in.nextLine());
 		
 		System.out.println("Digite o cpf do Passageiro: ");
-		this.passageiros.get(passageiros.size()-1).setCpf(in.nextLine());
+		passageiros.get(passageiros.size()-1).setCpf(in.nextLine());
 		/**
 		System.out.println("Digite a data de nascimento: ");
 		String auxiliar[] = in.nextLine().split("/");

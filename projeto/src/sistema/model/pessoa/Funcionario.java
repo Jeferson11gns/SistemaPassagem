@@ -1,6 +1,5 @@
 package sistema.model.pessoa;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
@@ -88,9 +87,6 @@ public class Funcionario extends Usuario implements CrudFuncionario {
 	
 	@Override
 	public void addFuncionario(List<Funcionario> funcionarios) {
-		//funcionarios.add(new Funcionario());
-		
-		funcionarios = funcionarios;
 		
 		System.out.println("Digite o Login do Funcionário");
 		funcionarios.get(funcionarios.size()-1).setLogin(in.nextLine());

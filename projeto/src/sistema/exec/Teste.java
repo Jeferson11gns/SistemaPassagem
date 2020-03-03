@@ -54,8 +54,8 @@ public class Teste {
 			listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
 		}
 		
-		
-		
+		listaPassageiros.add(new Passageiro());
+		listaPassageiros.get(listaPassageiros.size()-1).addPassageiro(listaPassageiros);
 		listaPassagens.add(new Passagem());
 		
 		//listaCidades.get(listaCidades.size()-1).addCidade(listaCidades);

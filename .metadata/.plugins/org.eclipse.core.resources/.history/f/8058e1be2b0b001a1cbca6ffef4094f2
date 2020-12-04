@@ -1,7 +1,0 @@
-package sistema.model;
-
-import sistema.model.pessoa.Usuario;
-
-public class Passageiro extends Usuario {
-
-}
